@@ -1,0 +1,134 @@
+/* =========================================================
+   HEADER MOBILE / TAB THEME PATCH
+   Link AFTER style.css and visual-effects.css in header.php:
+   <link rel="stylesheet" href="assets/css/header-mobile-theme.css">
+   Only touches: top marquee, header social icons, side-menu nav links.
+   ========================================================= */
+
+:root {
+    --hdr-gold: #f5c542;
+    --hdr-grad: linear-gradient(90deg, #b81f55 0%, #7a2fa6 50%, #2f49c9 100%);
+}
+
+
+/* ---------------------------------------------------------
+   1) TOP MARQUEE (mobile + tab) - premium gradient, not black
+   --------------------------------------------------------- */
+@media (max-width: 991.98px) {
+
+    .top-contact-marquee,
+    .top-contact-marquee .mobile-top-marquee,
+    .top-contact-marquee .mobile-marquee-track {
+        background: var(--hdr-grad) !important;
+    }
+
+    .top-contact-marquee {
+        border-bottom: 1px solid rgba(245, 197, 66, .55);
+    }
+
+    .top-contact-marquee .mobile-top-marquee {
+        display: block;
+        padding: 7px 0;
+        line-height: 1;
+    }
+
+    .top-contact-marquee .top-info-item,
+    .top-contact-marquee .top-info-item span,
+    .top-contact-marquee .top-info-item > a {
+        color: #fff !important;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    .top-contact-marquee .icon-gold,
+    .top-contact-marquee .top-info-item i.icon-gold {
+        color: var(--hdr-gold) !important;
+    }
+
+    .top-contact-marquee .marquee-divider {
+        color: var(--hdr-gold) !important;
+        opacity: .9;
+        margin: 0 14px;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   2) HEADER SOCIAL ICONS - same look as footer
+      (round, white ring, brand colours)
+      Applies to: mobile marquee + desktop top bar
+   --------------------------------------------------------- */
+.mobile-marquee-social,
+.top-bar-social-icons {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    vertical-align: middle;
+}
+
+.mobile-marquee-social a,
+.top-bar-social-icons a {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #fff !important;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, .6);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+    transition: transform .22s ease, box-shadow .22s ease;
+}
+
+.top-bar-social-icons a {
+    width: 34px;
+    height: 34px;
+    font-size: 15px;
+}
+
+.mobile-marquee-social a:hover,
+.top-bar-social-icons a:hover {
+    transform: translateY(-2px) scale(1.08);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, .35);
+    color: #fff !important;
+}
+
+.mobile-marquee-social a[aria-label="Facebook"],
+.top-bar-social-icons a[aria-label="Facebook"] {
+    background: #1877f2;
+}
+
+.mobile-marquee-social a[aria-label="Instagram"],
+.top-bar-social-icons a[aria-label="Instagram"] {
+    background: radial-gradient(circle at 30% 107%,
+        #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+}
+
+.mobile-marquee-social a[aria-label="WhatsApp"],
+.top-bar-social-icons a[aria-label="WhatsApp"] {
+    background: #25d366;
+}
+
+
+/* ---------------------------------------------------------
+   3) SIDE MENU - nav links (Home / Movies / Trailers / 3D)
+      shown on mobile + tab only (hidden on desktop >= 992px)
+   --------------------------------------------------------- */
+a.movie-menu-item {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    text-decoration: none !important;
+    color: #fff;
+}
+
+a.movie-menu-item:hover,
+a.movie-menu-item:focus {
+    color: #fff;
+}
+
+a.movie-menu-item .movie-menu-icon i {
+    color: inherit;
+}

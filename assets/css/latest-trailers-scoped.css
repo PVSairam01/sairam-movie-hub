@@ -1,0 +1,230 @@
+/* =========================================================
+   STANDALONE TRAILERS PAGE SCOPED CSS
+   ========================================================= */
+
+.trailers-page-scope {
+    width: 100%;
+    min-height: 60vh;
+    background-color: #030a10 !important;
+    color: #ffffff !important;
+    font-family: 'Source Sans Pro', system-ui, -apple-system, sans-serif !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.trailers-page-scope *,
+.trailers-page-scope *::before,
+.trailers-page-scope *::after {
+    box-sizing: border-box !important;
+}
+
+/* Base resets inside page scope */
+.trailers-page-scope h2, 
+.trailers-page-scope h3, 
+.trailers-page-scope p, 
+.trailers-page-scope a {
+    margin: 0 !important;
+    padding: 0 !important;
+    text-decoration: none !important;
+}
+
+.trailers-page-scope section.inner_content.bg_image.video {
+    width: 100% !important;
+    padding: 40px 0 !important;
+    background: linear-gradient(to right, rgba(3, 10, 16, 0.95) 0%, rgba(7, 29, 43, 0.95) 100%),
+                url('https://image.tmdb.org/t/p/w1280/hZkgoQY85WERNTYRHO0mQyY8Te1.jpg') center/cover no-repeat !important;
+}
+
+.trailers-page-scope div.column_wrapper {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.trailers-page-scope div.content_wrapper.wrap {
+    max-width: 1300px !important;
+    width: 100% !important;
+    padding: 0 40px !important;
+}
+
+/* Header & Tab Selector */
+.trailers-page-scope .column_header {
+    display: flex !important;
+    align-items: center !important;
+    gap: 20px !important;
+    margin-bottom: 25px !important;
+}
+
+.trailers-page-scope .column_header h2 {
+    font-size: 1.6rem !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+.trailers-page-scope div.selector {
+    display: flex !important;
+    border: 1px solid #d4af37 !important;
+    border-radius: 30px !important;
+    background-color: #071d2b !important;
+    overflow: hidden !important;
+}
+
+.trailers-page-scope div.selector div.anchor {
+    padding: 6px 18px !important;
+    border-radius: 30px !important;
+    transition: all 0.3s ease !important;
+}
+
+.trailers-page-scope div.selector div.anchor.selected {
+    background: linear-gradient(135deg, #d4af37 0%, #f39c12 100%) !important;
+}
+
+.trailers-page-scope div.selector div.anchor a {
+    color: #ffffff !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+}
+
+.trailers-page-scope div.selector div.anchor.selected a {
+    color: #000000 !important;
+    font-weight: 700 !important;
+}
+
+/* Scroller Layout */
+.trailers-page-scope div.media.discover.scroller_wrap {
+    display: flex !important;
+    overflow-x: auto !important;
+    gap: 24px !important;
+    padding-bottom: 20px !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: #d4af37 #071d2b !important;
+}
+
+.trailers-page-scope div.media.discover.scroller_wrap::-webkit-scrollbar {
+    height: 8px !important;
+}
+.trailers-page-scope div.media.discover.scroller_wrap::-webkit-scrollbar-track {
+    background: #071d2b !important;
+    border-radius: 10px !important;
+}
+.trailers-page-scope div.media.discover.scroller_wrap::-webkit-scrollbar-thumb {
+    background: #d4af37 !important;
+    border-radius: 10px !important;
+}
+
+/* Video Card Styling */
+.trailers-page-scope div.card.video.style_2 {
+    width: 300px !important;
+    min-width: 300px !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    flex-shrink: 0 !important;
+}
+
+.trailers-page-scope div.card.video.style_2 div.image {
+    width: 100% !important;
+    height: 168px !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    position: relative !important;
+    border: 1px solid rgba(212, 175, 55, 0.3) !important;
+    background-color: #030a10 !important;
+}
+
+.trailers-page-scope div.card.video.style_2 img.backdrop {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transition: transform 0.4s ease !important;
+}
+
+.trailers-page-scope div.card.video.style_2 div.image:hover img.backdrop {
+    transform: scale(1.06) !important;
+}
+
+.trailers-page-scope div.card.video.style_2 div.play {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 48px !important;
+    height: 48px !important;
+    background: rgba(0, 0, 0, 0.6) !important;
+    border: 2px solid #d4af37 !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #ffffff !important;
+    font-size: 1.8rem !important;
+    transition: all 0.3s ease !important;
+}
+
+.trailers-page-scope div.card.video.style_2 div.image:hover div.play {
+    background: #d4af37 !important;
+    color: #000000 !important;
+    transform: translate(-50%, -50%) scale(1.15) !important;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.8) !important;
+}
+
+.trailers-page-scope div.card div.options {
+    position: absolute !important;
+    top: 8px !important;
+    right: 8px !important;
+    z-index: 4 !important;
+}
+
+.trailers-page-scope div.card div.options a {
+    width: 24px !important;
+    height: 24px !important;
+    background: rgba(3, 10, 16, 0.7) !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #ffffff !important;
+}
+
+.trailers-page-scope div.card.video.style_2 div.content {
+    text-align: center !important;
+    padding-top: 10px !important;
+}
+
+.trailers-page-scope div.card.video.style_2 div.content h2 {
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 4px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+.trailers-page-scope div.card.video.style_2 div.content h2 a {
+    color: #ffffff !important;
+}
+
+.trailers-page-scope div.card.video.style_2 div.content h2 a:hover {
+    color: #d4af37 !important;
+}
+
+.trailers-page-scope div.card.video.style_2 div.content h3 {
+    font-size: 0.82rem !important;
+    color: #a0aec0 !important;
+    font-weight: 400 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+/* Modal Custom Styling */
+.trailers-page-scope .modal-content {
+    background-color: #030a10 !important;
+    border: 1px solid #d4af37 !important;
+}
+
+.trailers-page-scope .modal-header {
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2) !important;
+    color: #d4af37 !important;
+}

@@ -1,0 +1,269 @@
+/* =========================================================
+   PRCEPTION-STYLE EFFECTS v2  (additive - no HTML change)
+   Load AFTER your existing style.css
+   ========================================================= */
+:root{
+  --pc-ease:cubic-bezier(.22,.61,.36,1);
+  --pc-grad:linear-gradient(135deg,#feda75 0%,#fa7e1e 22%,#d62976 52%,#962fbf 76%,#4f5bd5 100%);
+}
+
+/* ---------- 1. SCROLL REVEAL (fade-up) ---------- */
+.pc-rv{opacity:0;transform:translateY(40px);transition:opacity .85s var(--pc-ease),transform .85s var(--pc-ease);transition-delay:var(--pc-delay,0s);will-change:opacity,transform}
+.pc-rv.pc-in{opacity:1;transform:none}
+
+/* ---------- 2. HEADINGS: TILT + FADE  &  WORD MASK REVEAL ---------- */
+.pc-head{opacity:0;transform:translateY(70px) rotate(4deg);transform-origin:0 100%;transition:opacity .9s var(--pc-ease),transform 1s var(--pc-ease)}
+.pc-head.pc-in{opacity:1;transform:none}
+.pc-split .pc-word{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.14em;margin-bottom:-.14em}
+.pc-split .pc-word>span{display:inline-block;transform:translateY(115%) rotate(7deg);transform-origin:0 100%;opacity:0;
+  transition:transform .95s var(--pc-ease),opacity .6s ease;transition-delay:calc(var(--i,0)*.07s + .05s)}
+.pc-split.pc-in .pc-word>span{transform:none;opacity:1}
+.hero_content_wrapper .hero_main_title_dark.pc-split,
+.hero_content_wrapper .hero_main_title.pc-split{animation:none;opacity:1}
+
+/* section sub-title line draw (like "—— STRATEGY") */
+.section_subtitle::before{content:"";display:inline-block;width:0;height:2px;margin-right:0;vertical-align:middle;background:currentColor;transition:width .9s var(--pc-ease),margin .9s var(--pc-ease)}
+.section_header.pc-in .section_subtitle::before{width:44px;margin-right:12px}
+
+/* ---------- 3. IMAGES: CAMERA FOCUS REVEAL + PARALLAX ---------- */
+/* images are ALWAYS visible by default; reveal is an animation only */
+img.pc-img.pc-in{animation:pcFocus 1.2s var(--pc-ease) both}
+@keyframes pcFocus{
+  from{clip-path:inset(0 0 100% 0);filter:blur(16px) brightness(1.2)}
+  to{clip-path:inset(0 0 0 0);filter:blur(0) brightness(1)}
+}
+.pc-par{scale:1.16;translate:0 var(--py,0px);will-change:translate}
+.heroBgSwiper .hero_slider_img{scale:1.08;translate:var(--hx,0px) var(--hy,0px)}
+.hero_content_wrapper{translate:calc(var(--hx,0px) * -.6) calc(var(--hy,0px) * -.6)}
+
+/* ---------- 4. CURSOR SPOTLIGHT + 3D TILT CARDS ---------- */
+.movie_card,.cast_card,.offer_card,.why_card,.review_card,.coming_card,.partner_logo,.trailer_card{position:relative;transform-style:preserve-3d}
+.movie_card::before,.cast_card::before,.offer_card::before,.why_card::before,.review_card::before,
+.coming_card::before,.partner_logo::before,.trailer_card::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:3;opacity:0;
+  background:radial-gradient(circle 240px at var(--mx,50%) var(--my,50%),rgba(255,255,255,.26),transparent 62%);
+  transition:opacity .35s ease}
+.movie_card:hover::before,.cast_card:hover::before,.offer_card:hover::before,.why_card:hover::before,
+.review_card:hover::before,.coming_card:hover::before,.partner_logo:hover::before,.trailer_card:hover::before{opacity:1}
+
+/* ---------- 5. CUSTOM CURSOR ---------- */
+.pc-cur-dot,.pc-cur-ring{position:fixed;left:0;top:0;pointer-events:none;z-index:100000;border-radius:50%}
+.pc-cur-dot{width:8px;height:8px;margin:-4px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.35)}
+.pc-cur-ring{width:40px;height:40px;margin:-20px;border:1.5px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.25);
+  transition:transform .3s var(--pc-ease),background .3s ease,border-color .3s ease,opacity .3s ease}
+.pc-cur-ring span{position:absolute;inset:0;display:grid;place-items:center;font:700 8px/1 system-ui,sans-serif;letter-spacing:.14em;color:#fff;opacity:0;transition:opacity .25s}
+.pc-cur-ring.pc-grow{transform:scale(1.55);background:rgba(255,255,255,.14)}
+.pc-cur-ring.pc-label{transform:scale(2.1);background:var(--pc-grad);border-color:transparent}
+.pc-cur-ring.pc-label span{opacity:1}
+.pc-cur-ring.pc-hide,.pc-cur-dot.pc-hide{opacity:0}
+
+/* ---------- 6. CAMERA VIEWFINDER (hero) ---------- */
+.pc-vf{position:absolute;inset:18px;pointer-events:none;z-index:3;opacity:0;transition:opacity .45s ease;font:600 11px/1.4 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.2em;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+.pc-vf.pc-on{opacity:1}
+.pc-vf i{position:absolute;width:34px;height:34px;border:2px solid rgba(255,255,255,.9)}
+.pc-vf .tl{left:0;top:0;border-right:0;border-bottom:0}
+.pc-vf .tr{right:0;top:0;border-left:0;border-bottom:0}
+.pc-vf .bl{left:0;bottom:0;border-right:0;border-top:0}
+.pc-vf .br{right:0;bottom:0;border-left:0;border-top:0}
+.pc-vf-rec{position:absolute;left:46px;top:6px}
+.pc-vf-rec b{display:inline-block;width:9px;height:9px;margin-right:8px;border-radius:50%;background:#ff2d2d;animation:pcBlink 1s steps(2) infinite}
+.pc-vf-bot{position:absolute;right:46px;bottom:6px;text-align:right}
+.pc-vf-cross{position:absolute;left:0;top:0;width:74px;height:74px;margin:-37px;border:1.5px solid rgba(255,255,255,.9);border-radius:50%}
+.pc-vf-cross::before,.pc-vf-cross::after{content:"";position:absolute;background:rgba(255,255,255,.9)}
+.pc-vf-cross::before{left:50%;top:-10px;bottom:-10px;width:1.5px;margin-left:-.75px}
+.pc-vf-cross::after{top:50%;left:-10px;right:-10px;height:1.5px;margin-top:-.75px}
+@keyframes pcBlink{50%{opacity:0}}
+
+/* ---------- 7. ROTATING CIRCULAR BADGE (hero) ---------- */
+.pc-badge{position:absolute;left:36px;bottom:34px;width:118px;height:118px;z-index:4;cursor:pointer;color:#fff}
+.pc-badge svg{width:100%;height:100%;animation:pcSpin 16s linear infinite;overflow:visible}
+.pc-badge text{font:700 9.5px system-ui,sans-serif;fill:#fff;letter-spacing:.14em}
+.pc-badge-arrow{position:absolute;left:50%;top:50%;width:44px;height:44px;margin:-22px;border-radius:50%;display:grid;place-items:center;background:var(--pc-grad);font-size:20px;line-height:1;transition:transform .4s var(--pc-ease)}
+.pc-badge:hover .pc-badge-arrow{transform:translateY(6px) scale(1.1)}
+@keyframes pcSpin{to{transform:rotate(360deg)}}
+
+/* ---------- 8. SCROLL PROGRESS + PAGE CURTAIN ---------- */
+.pc-progress{position:fixed;left:0;top:0;right:0;height:3px;z-index:100001;background:var(--pc-grad);transform:scaleX(0);transform-origin:0 50%;pointer-events:none}
+.pc-curtain{position:fixed;inset:0;z-index:100002;display:grid;place-items:center;background:#0a0a0a;
+  transform:translateY(0);transition:transform .9s cubic-bezier(.77,0,.18,1)}
+.pc-curtain.pc-open{transform:translateY(-100%);pointer-events:none}
+.pc-curtain.pc-prep{transition:none;transform:translateY(100%)}
+.pc-curtain-txt{font:800 clamp(28px,6vw,72px)/1 system-ui,sans-serif;letter-spacing:.18em;color:#fff;animation:pcFadeUp .8s var(--pc-ease) both}
+.pc-curtain-txt b{background:var(--pc-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+/* ---------- 9. SCROLL-SCRUB TEXT (words light up) ---------- */
+.pc-scrub .pc-sw{opacity:.2;transition:opacity .3s ease}
+.pc-scrub .pc-sw.on{opacity:1}
+
+/* ---------- 10. HEADER NAV PILLS ---------- */
+.header-center-nav .header-nav-btn{position:relative;overflow:hidden;transition:transform .35s var(--pc-ease),box-shadow .35s var(--pc-ease)}
+.header-center-nav .header-nav-btn:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.28)}
+
+/* ---------- 11. BUTTONS: SHINE SWEEP + MAGNETIC ---------- */
+.movie-signin-btn,.book_movie_btn,.primary_hero_btn,.secondary_hero_btn,.btn-gold,.btn-outline-gold,
+.header-nav-btn,.movie-book-btn,.category_buttons a,div.genre_filters button.btn-outline-primary{
+  position:relative;overflow:hidden;isolation:isolate;
+  transition:transform .35s var(--pc-ease),box-shadow .35s var(--pc-ease),translate .25s ease-out}
+.movie-signin-btn::after,.book_movie_btn::after,.primary_hero_btn::after,.secondary_hero_btn::after,.btn-gold::after,
+.btn-outline-gold::after,.header-nav-btn::after,.movie-book-btn::after,.category_buttons a::after,
+div.genre_filters button.btn-outline-primary::after{
+  content:"";position:absolute;top:0;left:-80%;width:55%;height:100%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.45),transparent);
+  transform:skewX(-20deg);transition:left .7s var(--pc-ease);pointer-events:none;z-index:1}
+.movie-signin-btn:hover::after,.book_movie_btn:hover::after,.primary_hero_btn:hover::after,.secondary_hero_btn:hover::after,
+.btn-gold:hover::after,.btn-outline-gold:hover::after,.header-nav-btn:hover::after,.movie-book-btn:hover::after,
+.category_buttons a:hover::after,div.genre_filters button.btn-outline-primary:hover::after{left:130%}
+.book_movie_btn:hover,.movie-signin-btn:hover,.primary_hero_btn:hover,.btn-gold:hover,.btn-outline-gold:hover{transform:translateY(-3px)}
+.book_movie_btn:active,.movie-signin-btn:active{transform:translateY(0) scale(.98)}
+.pc-mag{transition:transform .35s var(--pc-ease),box-shadow .35s var(--pc-ease),translate .25s ease-out}
+
+/* ---------- 12. UNDERLINE-GROW LINKS ---------- */
+.view_all,.footer ul li a{position:relative;display:inline-flex;align-items:center}
+.view_all::after,.footer ul li a::after{content:"";position:absolute;left:0;bottom:-3px;width:100%;height:2px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .45s var(--pc-ease)}
+.view_all:hover::after,.footer ul li a:hover::after{transform:scaleX(1);transform-origin:left}
+.view_all i{transition:transform .35s var(--pc-ease)}
+.view_all:hover i{transform:translateX(6px)}
+.footer ul li a{transition:transform .3s var(--pc-ease),color .2s ease}
+.footer ul li a:hover{transform:translateX(5px)}
+
+/* ---------- 13. HERO TEXT ENTRY + KEN BURNS ---------- */
+.heroBgSwiper .hero_slider_img{transition:transform 7s linear}
+.heroBgSwiper .swiper-slide-active .hero_slider_img{transform:scale(1.09)}
+@keyframes pcFadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+@keyframes pcPop{from{opacity:0;transform:scale(.86) rotate(-3deg)}to{opacity:1;transform:none}}
+.hero_content_wrapper .trust_badge_dark,.hero_content_wrapper .hero_main_title_dark,.hero_content_wrapper p,.hero_content_wrapper .btn{opacity:0;animation:pcFadeUp .9s var(--pc-ease) forwards}
+.hero_content_wrapper .trust_badge_dark{animation-delay:.15s}
+.hero_content_wrapper .hero_main_title_dark{animation-delay:.35s}
+.hero_content_wrapper p{animation-delay:.55s}
+.hero_content_wrapper .btn{animation-delay:.75s}
+
+/* ---------- 14. CARD / ICON HOVERS ---------- */
+.cast_card,.offer_card,.why_card,.partner_logo,.coming_card{transition:transform .45s var(--pc-ease),box-shadow .45s var(--pc-ease)}
+.cast_card img{transition:transform .5s var(--pc-ease)}
+.cast_card:hover img{transform:scale(1.08) rotate(2deg)}
+.offer_card>i,.why_card>i{transition:transform .5s var(--pc-ease)}
+.offer_card:hover>i,.why_card:hover>i{transform:rotate(-8deg) scale(1.12)}
+.trailer_card>i{animation:pcPulse 2.2s ease-in-out infinite}
+@keyframes pcPulse{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.12)}}
+.sairam-header-logo{transition:transform .5s var(--pc-ease),filter .5s ease}
+
+/* ---------- 15. SIDE MENU STAGGER ---------- */
+.movie-side-menu .movie-login-row,.movie-side-menu .movie-menu-item{opacity:0;transform:translateX(36px);transition:opacity .55s ease,transform .6s var(--pc-ease)}
+.movie-side-menu.is-open .movie-login-row,.movie-side-menu.is-open .movie-menu-item{opacity:1;transform:none;transition-delay:calc(.12s + var(--k,0)*.055s)}
+
+/* ---------- 16. MOVIE DETAILS OVERLAY ENTRY ---------- */
+.movie-details-overlay.is-open .movie-details-poster-wrap{animation:pcPop .85s var(--pc-ease) both}
+.movie-details-overlay.is-open .movie-details-info>*{animation:pcFadeUp .8s var(--pc-ease) both}
+.movie-details-overlay.is-open .movie-details-info>*:nth-child(1){animation-delay:.15s}
+.movie-details-overlay.is-open .movie-details-info>*:nth-child(2){animation-delay:.22s}
+.movie-details-overlay.is-open .movie-details-info>*:nth-child(3){animation-delay:.3s}
+.movie-details-overlay.is-open .movie-details-info>*:nth-child(4){animation-delay:.38s}
+.movie-details-overlay.is-open .movie-details-info>*:nth-child(5){animation-delay:.46s}
+.movie-details-overlay.is-open .movie-details-info>*:nth-child(6){animation-delay:.54s}
+.movie-details-overlay.is-open .movie-person-card,
+.movie-details-overlay.is-open .movie-related-card{animation:pcFadeUp .7s var(--pc-ease) .45s both}
+.movie-details-overlay.is-open .movie-details-hero img{animation:pcKen 14s linear both}
+@keyframes pcKen{from{transform:scale(1.04)}to{transform:scale(1.16)}}
+
+/* ---------- 17. FLOATING BUTTONS ---------- */
+.floating-btn{animation:pcFloat 3.6s ease-in-out infinite}
+.floating-btn:nth-child(2){animation-delay:.5s}
+.floating-btn:nth-child(3){animation-delay:1s}
+@keyframes pcFloat{50%{translate:0 -6px}}
+.hotline-btn{animation:pcFloat 3.6s ease-in-out .5s infinite,pcRing 2.4s ease-out infinite}
+@keyframes pcRing{0%{box-shadow:0 0 0 0 rgba(235,16,42,.55)}100%{box-shadow:0 0 0 18px rgba(235,16,42,0)}}
+
+/* ---------- 18. FOOTER GIANT MARQUEE TEXT + SOCIAL ---------- */
+.footer{position:relative;overflow:hidden}
+.footer::before{
+  content:"SAIRAM MOVIES \00a0 \2022 \00a0 SAIRAM MOVIES \00a0 \2022 \00a0 SAIRAM MOVIES \00a0 \2022 \00a0 SAIRAM MOVIES \00a0 \2022 \00a0 SAIRAM MOVIES";
+  position:absolute;left:0;bottom:-.18em;white-space:nowrap;font-size:clamp(90px,15vw,230px);font-weight:900;line-height:1;letter-spacing:-4px;
+  color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.16);pointer-events:none;user-select:none;z-index:0;animation:pcMarquee 40s linear infinite}
+.footer>*{position:relative;z-index:1}
+@keyframes pcMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.social_icons a{transition:transform .4s var(--pc-ease)}
+.social_icons a:hover{transform:translateY(-5px) rotate(8deg) scale(1.1)}
+
+/* ---------- 19. TOUCH / SMALL SCREENS / REDUCED MOTION ---------- */
+@media (hover:none),(pointer:coarse){.pc-cur-dot,.pc-cur-ring,.pc-vf{display:none!important}}
+@media (max-width:991.98px){.pc-badge{display:none}}
+@media (prefers-reduced-motion:reduce){
+  .pc-rv,.pc-head,.pc-split .pc-word>span{opacity:1!important;transform:none!important;transition:none!important}
+  img.pc-img{animation:none!important}
+  .pc-curtain,.pc-vf,.pc-badge,.pc-cur-dot,.pc-cur-ring,.pc-progress{display:none!important}
+  .footer::before,.trailer_card>i,.floating-btn,.hotline-btn,.hero_content_wrapper *{animation:none!important;opacity:1!important}
+  .heroBgSwiper .hero_slider_img{transition:none!important;transform:none!important}
+}
+
+
+/* =========================================================
+   FULL POSTER VISIBILITY - movie names must never be cropped
+   (overrides cover/zoom on every movie card image)
+   ========================================================= */
+body .movie_card .movie_image{
+  aspect-ratio:2 / 3 !important;
+  height:auto !important;
+  background:#0b0b0b !important;
+}
+body .movie_card .movie_image img,
+body .telugu_movies_section .movie_card .movie_image img,
+body .trendingSwiperDesktop .movie_image img,
+body .latestSwiperDesktop .movie_image img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+  object-position:center !important;
+  scale:1 !important;
+  translate:none !important;
+}
+/* no zoom-on-hover that would re-crop the poster */
+body .movie_card:hover .movie_image img,
+body .telugu_movies_section .movie_card:hover .movie_image img,
+body .trendingSwiperDesktop .movie_card:hover .movie_image img,
+body .latestSwiperDesktop .movie_card:hover .movie_image img{
+  transform:none !important;
+}
+/* movie details popup + related cards: same rule */
+body .movie-related-card img,
+body .movie-details-poster{
+  object-fit:contain !important;
+  background:#0b0b0b;
+}
+
+
+/* =========================================================
+   HERO CAMERA LENS (magnifier following the cursor)
+   ========================================================= */
+.pc-lens{position:absolute;inset:0;z-index:3;pointer-events:none;overflow:hidden;clip-path:circle(0px at 50% 50%)}
+.pc-lens img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.5);
+  filter:saturate(1.6) contrast(1.12) brightness(1.08);max-width:none}
+.pc-lens-ring{position:absolute;left:0;top:0;z-index:3;pointer-events:none;border-radius:50%;opacity:0;
+  background:repeating-conic-gradient(rgba(255,255,255,.95) 0 .7deg,transparent .7deg 6deg);
+  -webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 12px),#000 calc(100% - 11px));
+          mask:radial-gradient(farthest-side,transparent calc(100% - 12px),#000 calc(100% - 11px));
+  transition:opacity .3s ease}
+.pc-lens-ring::after{content:"";position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(255,255,255,.95)}
+.pc-vf-cross{border-color:transparent}
+
+/* =========================================================
+   MOVIE WALL: tilted 3D wall that flattens while scrolling
+   ========================================================= */
+.pc-wall .swiper-slide{
+  transform:perspective(1100px) translateY(calc(var(--w,0) * 110px)) rotateX(calc(var(--w,0) * 52deg)) rotateZ(calc(var(--w,0) * -9deg)) scale(calc(1 - var(--w,0) * .12));
+  transform-origin:50% 100%;
+  opacity:calc(1 - var(--w,0) * .55);
+  transition:none !important;
+  will-change:transform,opacity;
+}
+.pc-wall .swiper-slide:nth-child(even){
+  transform:perspective(1100px) translateY(calc(var(--w,0) * 170px)) rotateX(calc(var(--w,0) * 52deg)) rotateZ(calc(var(--w,0) * -9deg)) scale(calc(1 - var(--w,0) * .12));
+}
+.pc-wall.pc-wall-flat .swiper-slide,
+.pc-wall.pc-wall-flat .swiper-slide:nth-child(even){transform:none;opacity:1;will-change:auto}
+@media (max-width:767.98px){
+  .pc-wall .swiper-slide,.pc-wall .swiper-slide:nth-child(even){transform:none;opacity:1}
+}
+@media (prefers-reduced-motion:reduce){
+  .pc-wall .swiper-slide,.pc-wall .swiper-slide:nth-child(even){transform:none!important;opacity:1!important}
+  .pc-lens,.pc-lens-ring{display:none!important}
+}
