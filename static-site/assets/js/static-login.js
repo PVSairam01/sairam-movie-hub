@@ -84,14 +84,5 @@
         input.value = '';
       });
     });
-    document.querySelectorAll('.movie-city-btn').forEach((button) => {
-      button.onclick = () => {
-        const city = prompt('Choose a city:', localStorage.getItem('selectedCity') || 'Kakinada');
-        if (!city) return;
-        localStorage.setItem('selectedCity', city.trim());
-        const display = document.getElementById('currentLocationDisplay');
-        if (display) display.textContent = city.trim();
-      };
-    });
   });
 })();
