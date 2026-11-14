@@ -57,22 +57,6 @@ img.pc-img.pc-in{animation:pcFocus 1.2s var(--pc-ease) both}
 .pc-cur-ring.pc-label span{opacity:1}
 .pc-cur-ring.pc-hide,.pc-cur-dot.pc-hide{opacity:0}
 
-/* ---------- 6. CAMERA VIEWFINDER (hero) ---------- */
-.pc-vf{position:absolute;inset:18px;pointer-events:none;z-index:3;opacity:0;transition:opacity .45s ease;font:600 11px/1.4 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.2em;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6)}
-.pc-vf.pc-on{opacity:1}
-.pc-vf i{position:absolute;width:34px;height:34px;border:2px solid rgba(255,255,255,.9)}
-.pc-vf .tl{left:0;top:0;border-right:0;border-bottom:0}
-.pc-vf .tr{right:0;top:0;border-left:0;border-bottom:0}
-.pc-vf .bl{left:0;bottom:0;border-right:0;border-top:0}
-.pc-vf .br{right:0;bottom:0;border-left:0;border-top:0}
-.pc-vf-rec{position:absolute;left:46px;top:6px}
-.pc-vf-rec b{display:inline-block;width:9px;height:9px;margin-right:8px;border-radius:50%;background:#ff2d2d;animation:pcBlink 1s steps(2) infinite}
-.pc-vf-bot{position:absolute;right:46px;bottom:6px;text-align:right}
-.pc-vf-cross{position:absolute;left:0;top:0;width:74px;height:74px;margin:-37px;border:1.5px solid rgba(255,255,255,.9);border-radius:50%}
-.pc-vf-cross::before,.pc-vf-cross::after{content:"";position:absolute;background:rgba(255,255,255,.9)}
-.pc-vf-cross::before{left:50%;top:-10px;bottom:-10px;width:1.5px;margin-left:-.75px}
-.pc-vf-cross::after{top:50%;left:-10px;right:-10px;height:1.5px;margin-top:-.75px}
-@keyframes pcBlink{50%{opacity:0}}
 
 /* ---------- 7. ROTATING CIRCULAR BADGE (hero) ---------- */
 .pc-badge{position:absolute;left:36px;bottom:34px;width:118px;height:118px;z-index:4;cursor:pointer;color:#fff}
@@ -175,23 +159,18 @@ div.genre_filters button.btn-outline-primary::after{
 
 /* ---------- 18. FOOTER GIANT MARQUEE TEXT + SOCIAL ---------- */
 .footer{position:relative;overflow:hidden}
-.footer::before{
-  content:"SAIRAM MOVIES \00a0 \2022 \00a0 SAIRAM MOVIES \00a0 \2022 \00a0 SAIRAM MOVIES \00a0 \2022 \00a0 SAIRAM MOVIES \00a0 \2022 \00a0 SAIRAM MOVIES";
-  position:absolute;left:0;bottom:-.18em;white-space:nowrap;font-size:clamp(90px,15vw,230px);font-weight:900;line-height:1;letter-spacing:-4px;
-  color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.16);pointer-events:none;user-select:none;z-index:0;animation:pcMarquee 40s linear infinite}
 .footer>*{position:relative;z-index:1}
-@keyframes pcMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .social_icons a{transition:transform .4s var(--pc-ease)}
 .social_icons a:hover{transform:translateY(-5px) rotate(8deg) scale(1.1)}
 
 /* ---------- 19. TOUCH / SMALL SCREENS / REDUCED MOTION ---------- */
-@media (hover:none),(pointer:coarse){.pc-cur-dot,.pc-cur-ring,.pc-vf{display:none!important}}
+@media (hover:none),(pointer:coarse){.pc-cur-dot,.pc-cur-ring{display:none!important}}
 @media (max-width:991.98px){.pc-badge{display:none}}
 @media (prefers-reduced-motion:reduce){
   .pc-rv,.pc-head,.pc-split .pc-word>span{opacity:1!important;transform:none!important;transition:none!important}
   img.pc-img{animation:none!important}
-  .pc-curtain,.pc-vf,.pc-badge,.pc-cur-dot,.pc-cur-ring,.pc-progress{display:none!important}
-  .footer::before,.trailer_card>i,.floating-btn,.hotline-btn,.hero_content_wrapper *{animation:none!important;opacity:1!important}
+  .pc-curtain,.pc-badge,.pc-cur-dot,.pc-cur-ring,.pc-progress{display:none!important}
+  .trailer_card>i,.floating-btn,.hotline-btn,.hero_content_wrapper *{animation:none!important;opacity:1!important}
   .heroBgSwiper .hero_slider_img{transition:none!important;transform:none!important}
 }
 
@@ -232,20 +211,6 @@ body .movie-details-poster{
 
 
 /* =========================================================
-   HERO CAMERA LENS (magnifier following the cursor)
-   ========================================================= */
-.pc-lens{position:absolute;inset:0;z-index:3;pointer-events:none;overflow:hidden;clip-path:circle(0px at 50% 50%)}
-.pc-lens img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.5);
-  filter:saturate(1.6) contrast(1.12) brightness(1.08);max-width:none}
-.pc-lens-ring{position:absolute;left:0;top:0;z-index:3;pointer-events:none;border-radius:50%;opacity:0;
-  background:repeating-conic-gradient(rgba(255,255,255,.95) 0 .7deg,transparent .7deg 6deg);
-  -webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 12px),#000 calc(100% - 11px));
-          mask:radial-gradient(farthest-side,transparent calc(100% - 12px),#000 calc(100% - 11px));
-  transition:opacity .3s ease}
-.pc-lens-ring::after{content:"";position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(255,255,255,.95)}
-.pc-vf-cross{border-color:transparent}
-
-/* =========================================================
    MOVIE WALL: tilted 3D wall that flattens while scrolling
    ========================================================= */
 .pc-wall .swiper-slide{
@@ -265,5 +230,4 @@ body .movie-details-poster{
 }
 @media (prefers-reduced-motion:reduce){
   .pc-wall .swiper-slide,.pc-wall .swiper-slide:nth-child(even){transform:none!important;opacity:1!important}
-  .pc-lens,.pc-lens-ring{display:none!important}
 }

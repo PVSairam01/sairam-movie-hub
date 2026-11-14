@@ -165,25 +165,11 @@
     /* ======================================================
        I. HERO: viewfinder + badge + parallax
        ====================================================== */
-    var hero = null, vf = null, vfCross = null, vfTxt = null;
-    var lens = null, lensImg = null, lensRing = null, lx = 0, ly = 0, lr = 0, lensSrc = '';
+    var hero = null;
     var walls = [];
     function heroInit() {
         hero = D.querySelector('.hero_section_dark') || D.querySelector('.hero_section_light');
         if (!hero || hero.__pcHero) return; hero.__pcHero = 1;
-        if (fine) {
-            lens = el('div', 'pc-lens'); lensImg = el('img'); lensImg.alt = ''; lens.appendChild(lensImg);
-            lensRing = el('div', 'pc-lens-ring');
-            hero.appendChild(lens); hero.appendChild(lensRing);
-            vf = el('div', 'pc-vf',
-                '<i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i>' +
-                '<div class="pc-vf-rec"><b></b>REC</div>' +
-                '<div class="pc-vf-bot">SAIRAM MOVIES &mdash; FRAME 001 &middot; FOCUS <span class="pc-vf-xy">X 0.50 &middot; Y 0.50</span></div>' +
-                '<div class="pc-vf-cross"></div>');
-            hero.appendChild(vf);
-            vfCross = vf.querySelector('.pc-vf-cross');
-            vfTxt = vf.querySelector('.pc-vf-xy');
-        }
         var badge = el('div', 'pc-badge',
             '<svg viewBox="0 0 120 120" aria-hidden="true"><defs><path id="pcCirc" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs>' +
             '<text><textPath href="#pcCirc" textLength="285" lengthAdjust="spacing">BOOK TICKETS \u2022 WATCH TRAILERS \u2022 3D EXPERIENCE \u2022 </textPath></text></svg>' +
@@ -332,7 +318,6 @@
             var t = e.target, lab = '', grow = false;
             if (t.closest('a,button,.menu_icon,.location,.pc-badge')) grow = true;
             else if (t.closest('.trailer_card')) lab = 'PLAY';
-            else if (t.closest('.movie_card,.movie-related-card')) lab = 'VIEW';
             ring.classList.toggle('pc-grow', grow);
             ring.classList.toggle('pc-label', !!lab);
             ringLbl.textContent = lab;
@@ -356,36 +341,6 @@
                 hx = lerp(hx, tx, 0.08); hy = lerp(hy, ty, 0.08);
                 hero.style.setProperty('--hx', hx.toFixed(2) + 'px');
                 hero.style.setProperty('--hy', hy.toFixed(2) + 'px');
-                if (lens) {
-                    var act = hero.querySelector('.swiper-slide-active .hero_slider_img');
-                    var src = act ? (act.currentSrc || act.src) : '';
-                    if (src && src !== lensSrc) { lensSrc = src; lensImg.src = src; }
-                    var hw = hero.clientWidth, hh = hero.clientHeight;
-                    /* scroll progress while hero leaves the screen (0 -> 1) */
-                    var hbox = hero.getBoundingClientRect();
-                    var sp = clamp(-hbox.top / (hbox.height * 0.8), 0, 1);
-                    sp = sp * sp * (3 - 2 * sp);
-                    /* centre drifts from cursor to hero centre as the circle grows */
-                    var tx2 = lerp(hnx * hw, hw / 2, sp), ty2 = lerp(hny * hh, hh / 2, sp);
-                    var maxR = Math.hypot(hw, hh) / 2 * 1.08;
-                    var wantR = Math.max((heroIn && src) ? 135 : 0, src ? sp * maxR : 0);
-                    if (lr < 2 && (heroIn || sp > 0)) { lx = tx2; ly = ty2; }
-                    lx = lerp(lx, tx2, 0.16); ly = lerp(ly, ty2, 0.16);
-                    lr = lerp(lr, wantR, sp > 0 ? 0.22 : 0.12);
-                    lens.style.clipPath = 'circle(' + lr.toFixed(1) + 'px at ' + lx.toFixed(1) + 'px ' + ly.toFixed(1) + 'px)';
-                    lensImg.style.transformOrigin = lx.toFixed(1) + 'px ' + ly.toFixed(1) + 'px';
-                    lensImg.style.transform = 'scale(' + (1.5 + sp * 0.7).toFixed(3) + ')';
-                    lensRing.style.width = lensRing.style.height = (lr * 2).toFixed(1) + 'px';
-                    lensRing.style.translate = (lx - lr).toFixed(1) + 'px ' + (ly - lr).toFixed(1) + 'px';
-                    lensRing.style.opacity = lr > 4 ? (1 - clamp((sp - 0.55) * 2.2, 0, 1)).toFixed(2) : 0;
-                }
-                if (vf) {
-                    vf.classList.toggle('pc-on', heroIn);
-                    var w = vf.clientWidth, h = vf.clientHeight;
-                    cx = lerp(cx, hnx * w, 0.14); cy = lerp(cy, hny * h, 0.14);
-                    vfCross.style.translate = cx.toFixed(1) + 'px ' + cy.toFixed(1) + 'px';
-                    if (heroIn) vfTxt.innerHTML = 'X ' + hnx.toFixed(2) + ' &middot; Y ' + hny.toFixed(2);
-                }
             }
             requestAnimationFrame(loop);
         })();
