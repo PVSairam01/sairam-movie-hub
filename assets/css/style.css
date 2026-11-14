@@ -10311,3 +10311,10 @@ body h1.hero_main_title_dark .text-primary {
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
 }
+
+/* Desktop navigation is already expanded; keep the drawer toggle for smaller screens only. */
+@media (min-width: 992px) {
+    .movie-menu-btn {
+        display: none !important;
+    }
+}
