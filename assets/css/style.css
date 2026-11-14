@@ -10267,7 +10267,47 @@ div.genre_filters button.btn-outline-primary {
     width: 100%;
 }
 
+/* Location picker: use the existing Instagram gradient theme */
+body .modal#locationModal .modal-content,
+body .modal#locationModal .location-search-section,
+body .modal#locationModal .modal-scrollable-body,
+body .modal#locationModal .popular-cities-section,
+body .modal#locationModal .all-cities-wrapper,
+body .modal#locationModal #allCitiesList,
+body .modal#locationModal #allCities,
+body .modal#locationModal #initialCities,
+body .modal#locationModal .location-status {
+    background: var(--instagram-gradient) !important;
+    background-image: var(--instagram-gradient) !important;
+    color: #ffffff !important;
+}
+body .modal#locationModal .location-search-input,
+body .modal#locationModal #citySearchInput {
+    background: var(--instagram-gradient) !important;
+    background-image: var(--instagram-gradient) !important;
+    color: #ffffff !important;
+}
 
-
-
-
+/* High-contrast premium gradient for section titles */
+body h1.hero_main_title,
+body h1.hero_main_title_dark,
+body h2.section_title,
+body h2.section-title,
+body h2.section-heading,
+body .trailers-title,
+body .sw-title {
+    color: #fff8e7 !important;
+    background-image: linear-gradient(90deg, #fff8e7 0%, #ffe082 30%, #ffffff 62%, #e9d5ff 100%) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    text-shadow: 0 1px 2px rgba(28, 8, 38, .45);
+}
+body h1.hero_main_title .text-primary,
+body h1.hero_main_title_dark .text-primary {
+    color: #fff8e7 !important;
+    background-image: linear-gradient(90deg, #fff8e7 0%, #ffe082 30%, #ffffff 62%, #e9d5ff 100%) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
