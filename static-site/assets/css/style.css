@@ -10114,6 +10114,35 @@ body .app_section .btn-dark {
     color: #ffffff !important;
 }
 
+/* Responsive crop for the home page hero carousel artwork. */
+@media (max-width: 767.98px) {
+    .hero_section_dark {
+        height: auto;
+        min-height: 0;
+    }
+
+    .hero_section_dark .heroBgSwiper,
+    .hero_section_dark .heroBgSwiper .swiper-slide,
+    .hero_section_dark .hero_slider_img {
+        height: clamp(240px, 58vw, 380px);
+    }
+
+    .hero_section_dark .hero_slider_img {
+        display: block;
+        width: 100%;
+        object-fit: cover;
+        object-position: center center;
+    }
+
+    .hero_section_dark .hero_content_wrapper {
+        display: none !important;
+    }
+
+    .hero_section_dark + .movie_section {
+        padding-top: 20px !important;
+    }
+}
+
 /* White typography throughout the Instagram theme */
 body .movie-logo,
 body .movie-logo span,
