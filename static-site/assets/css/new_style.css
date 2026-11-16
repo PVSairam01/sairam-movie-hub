@@ -441,3 +441,8 @@ html body .movie-side-menu .movie-side-menu-header h3,
 html body .movie-side-menu .movie-login-text strong {
     color: var(--premium-text) !important;
 }
+
+html body .movie-about-section {
+    background: var(--premium-page-gradient) !important;
+    background-image: var(--premium-page-gradient) !important;
+}
