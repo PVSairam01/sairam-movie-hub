@@ -3840,6 +3840,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'avengers': {
             title: 'Avengers Endgame',
             image: 'assets/images/movies/movie1.jpg',
+            backdrop: 'assets/images/movies/Avengers-end-game.jfif',
             rating: '9.2/10',
             votes: '210K+ Votes',
             meta: '3h 01m  •  Action, Adventure, Sci-Fi  •  UA  •  English',
@@ -3888,6 +3889,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'batman': {
             title: 'The Batman',
             image: 'assets/images/movies/movie5.png',
+            backdrop: 'assets/images/movies/the-batman-movie.avif',
             rating: '9.1/10',
             votes: '205K+ Votes',
             meta: '2h 56m  •  Action, Crime, Drama  •  UA  •  English',
@@ -3936,6 +3938,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'the-batman': {
             title: 'The Batman',
             image: 'assets/images/movies/latest4.jpg',
+            backdrop: 'assets/images/movies/the-batman-movie.avif',
             rating: '9.0/10',
             votes: '190K+ Votes',
             meta: '2h 56m  •  Action, Crime, Drama  •  UA  •  English',
@@ -4105,7 +4108,9 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('movieReviewTitle').textContent = movie.title;
         document.getElementById('movieReviewText').textContent = movie.review;
         document.getElementById('movieDetailsPoster').src = movie.image;
-        document.getElementById('movieDetailsBackdrop').src = movie.image;
+        const movieBackdrop = document.getElementById('movieDetailsBackdrop');
+        movieBackdrop.src = movie.backdrop || movie.image;
+        movieBackdrop.classList.toggle('movie-details-backdrop-fit', Boolean(movie.backdrop));
         document.getElementById('movieDetailsPoster').alt = movie.title;
         document.getElementById('movieDetailsBackdrop').alt = movie.title;
         document.getElementById('movieDetailsTags').innerHTML = movie.tags.map(tag => `<span>${tag}</span>`).join('');

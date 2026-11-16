@@ -3802,6 +3802,16 @@ body.modal-open-custom {
     transform: scale(1.04);
 }
 
+.movie-details-overlay.is-open .movie-details-hero img.movie-details-backdrop-fit {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    filter: none;
+    transform: none;
+    animation: none;
+}
+
 .movie-details-hero-overlay {
     position: absolute;
     inset: 0;
