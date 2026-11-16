@@ -1,0 +1,199 @@
+:root {
+    --premium-ink: #031826;
+    --premium-deep: #05293b;
+    --premium-surface: #07364a;
+    --premium-surface-raised: #0a4055;
+    --premium-cyan: #38e5f2;
+    --premium-cyan-soft: #8af5fb;
+    --premium-text: #f3fcff;
+    --premium-muted: #b7d3dd;
+    --premium-border: rgba(56, 229, 242, .3);
+    --premium-page-gradient: linear-gradient(145deg, #031826 0%, #05364a 55%, #041e30 100%);
+    --premium-surface-gradient: linear-gradient(135deg, #06283a 0%, #075066 100%);
+    --premium-card-gradient: linear-gradient(145deg, #082b3d 0%, #06445a 100%);
+}
+
+html,
+body {
+    background-color: var(--premium-ink) !important;
+    color: var(--premium-text);
+}
+
+body {
+    background-image: var(--premium-page-gradient) !important;
+}
+
+html body .top-bar-bg,
+html body .movie-navbar,
+html body .movie-navbar-main,
+html body .movie-secondary-navbar,
+html body .movie-side-menu,
+html body .footer {
+    background: var(--premium-surface-gradient) !important;
+    background-image: var(--premium-surface-gradient) !important;
+    border-color: var(--premium-border) !important;
+    color: var(--premium-text) !important;
+}
+
+html body section.bg-white,
+html body section.bg-light,
+html body section.hero_section_dark,
+html body section.movie_section,
+html body section.categories_section,
+html body section.telugu_movies_section,
+html body section.coming_section,
+html body section.offers_section,
+html body section.why_section,
+html body section.stats_section,
+html body section.review_section,
+html body section.partner_section,
+html body section.app_section,
+html body section.newsletter_section,
+html body .sw-section,
+html body .booking-page {
+    background: var(--premium-page-gradient) !important;
+    background-image: var(--premium-page-gradient) !important;
+    color: var(--premium-text) !important;
+}
+
+html body .latest-trailers-gold-wrapper,
+html body .latest-trailers-gold-wrapper .trailers-container {
+    background: var(--premium-page-gradient) !important;
+    background-image: var(--premium-page-gradient) !important;
+    color: var(--premium-text) !important;
+}
+
+html body .movie_card,
+html body .cast_card,
+html body .coming_card,
+html body .offer_card,
+html body .why_card,
+html body .review_card,
+html body .partner_logo,
+html body .movie-offer-card,
+html body .movie-review-card,
+html body .movie-related-card,
+html body .movie-person-card,
+html body .movie-details-panel,
+html body .login_card,
+html body .card-dark,
+html body .snack-card,
+html body .trailer-card {
+    background: var(--premium-card-gradient) !important;
+    background-image: var(--premium-card-gradient) !important;
+    border-color: var(--premium-border) !important;
+    color: var(--premium-text) !important;
+}
+
+html body .movie_card:hover,
+html body .cast_card:hover,
+html body .coming_card:hover,
+html body .offer_card:hover,
+html body .why_card:hover,
+html body .review_card:hover,
+html body .partner_logo:hover {
+    border-color: var(--premium-cyan) !important;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, .35), 0 0 20px rgba(56, 229, 242, .15) !important;
+}
+
+html body .movie_image,
+html body .card-thumbnail,
+html body .card-meta,
+html body .tab-selector-pill,
+html body .movie-details-rating-row,
+html body .movie-details-rating,
+html body .movie-details-section-heading,
+html body .movie-details-tags span {
+    background-color: var(--premium-deep) !important;
+    border-color: var(--premium-border) !important;
+}
+
+html body .section_title,
+html body .hero_main_title,
+html body .trailers-title,
+html body .movie_title,
+html body .movie-title,
+html body .movie-details-info h2,
+html body .coming_content h4,
+html body .offer_card h4,
+html body .why_card h5 {
+    color: var(--premium-cyan-soft) !important;
+    background: none !important;
+    background-image: none !important;
+    -webkit-text-fill-color: var(--premium-cyan-soft) !important;
+}
+
+html body .section_subtitle,
+html body .hero_description,
+html body .movie_genre,
+html body .movie_info,
+html body .trailer-subtitle,
+html body .coming_content p,
+html body .offer_card p,
+html body .why_card p,
+html body .review_card p,
+html body .footer p,
+html body .footer ul li a {
+    color: var(--premium-muted) !important;
+}
+
+html body .view_all,
+html body .movie-details-kicker,
+html body .movie-details-meta,
+html body .movie-details-rating strong,
+html body .movie-details-rating span {
+    color: var(--premium-cyan-soft) !important;
+}
+
+html body .tab-btn {
+    color: var(--premium-muted) !important;
+}
+
+html body .tab-btn.active {
+    background: var(--premium-cyan) !important;
+    background-image: none !important;
+    color: var(--premium-ink) !important;
+    box-shadow: 0 0 18px rgba(56, 229, 242, .35) !important;
+}
+
+html body .book_movie_btn,
+html body .movie-book-btn,
+html body .movie-rate-btn,
+html body .movie-share-btn,
+html body .header-nav-btn,
+html body .movie-signin-btn,
+html body .movie-menu-btn,
+html body .movie-login-register,
+html body .btn-proceed,
+html body .booking-page .btn-primary {
+    background: linear-gradient(135deg, #b88932 0%, #f0cc72 100%) !important;
+    background-image: linear-gradient(135deg, #b88932 0%, #f0cc72 100%) !important;
+    border-color: #f0cc72 !important;
+    color: #08232d !important;
+}
+
+html body .movie-city-btn {
+    background: var(--premium-surface-gradient) !important;
+    background-image: var(--premium-surface-gradient) !important;
+    border-color: var(--premium-border) !important;
+    color: var(--premium-text) !important;
+}
+
+html body .movie-city-btn:hover {
+    background: linear-gradient(135deg, #0a4055, #0a5369) !important;
+    background-image: linear-gradient(135deg, #0a4055, #0a5369) !important;
+    border-color: var(--premium-cyan) !important;
+    color: var(--premium-cyan-soft) !important;
+}
+
+html body .movie-city-btn .city-arrow,
+html body .movie-city-btn > .bi-geo-alt-fill {
+    color: var(--premium-cyan-soft) !important;
+}
+
+html body .movie_rating,
+html body .movie-details-status {
+    background: var(--premium-cyan) !important;
+    border-color: var(--premium-cyan-soft) !important;
+    color: var(--premium-ink) !important;
+}
