@@ -314,3 +314,130 @@ html body .top-bar-bg .icon-gold {
         font-size: 14px !important;
     }
 }
+
+html body .trendingSwiperDesktop .movie_card {
+    background: var(--premium-page-gradient) !important;
+    background-image: var(--premium-page-gradient) !important;
+}
+
+html body .modal#locationModal .modal-content,
+html body .modal#locationModal .location-search-section,
+html body .modal#locationModal .modal-scrollable-body,
+html body .modal#locationModal .popular-cities-section,
+html body .modal#locationModal .all-cities-wrapper,
+html body .modal#locationModal #allCitiesList,
+html body .modal#locationModal #allCities,
+html body .modal#locationModal #initialCities,
+html body .modal#locationModal .location-status {
+    background: var(--premium-page-gradient) !important;
+    background-image: var(--premium-page-gradient) !important;
+    border-color: var(--premium-border) !important;
+    color: var(--premium-text) !important;
+}
+
+html body .modal#locationModal .location-search-input,
+html body .modal#locationModal #citySearchInput {
+    background: var(--premium-deep) !important;
+    background-image: none !important;
+    border-color: var(--premium-border) !important;
+    color: var(--premium-text) !important;
+}
+
+html body .modal#locationModal .location-search-input::placeholder,
+html body .modal#locationModal #citySearchInput::placeholder {
+    color: var(--premium-muted) !important;
+}
+
+html body .modal#locationModal .location-search-input:focus,
+html body .modal#locationModal #citySearchInput:focus {
+    border-color: var(--premium-cyan) !important;
+    box-shadow: 0 0 0 3px rgba(56, 229, 242, .18) !important;
+}
+
+html body .modal#locationModal .location-search-icon,
+html body .modal#locationModal .detect-location-btn,
+html body .modal#locationModal #detectLocationBtn,
+html body .modal#locationModal .city-action-btn,
+html body .modal#locationModal #viewAllCitiesBtn,
+html body .modal#locationModal #hideAllCitiesBtn,
+html body .modal#locationModal .location-section-title h6 {
+    color: var(--premium-cyan-soft) !important;
+}
+
+html body .modal#locationModal .city-item,
+html body .modal#locationModal .popular-city-name,
+html body .modal#locationModal .list-city-item {
+    color: var(--premium-text) !important;
+}
+
+html body .modal#locationModal .city-item:hover,
+html body .modal#locationModal .popular-city-card:hover,
+html body .modal#locationModal .list-city-item:hover,
+html body .modal#locationModal .list-city-item.selected-city {
+    background: var(--premium-surface-raised) !important;
+    background-image: none !important;
+    color: var(--premium-cyan-soft) !important;
+}
+
+html body .modal#locationModal #allCities::-webkit-scrollbar-track {
+    background: var(--premium-deep) !important;
+}
+
+html body .modal#locationModal #allCities::-webkit-scrollbar-thumb {
+    background: var(--premium-cyan) !important;
+}
+
+html body .movie-side-menu .movie-menu-item {
+    background: var(--premium-card-gradient) !important;
+    background-image: var(--premium-card-gradient) !important;
+    border-color: var(--premium-border) !important;
+    color: var(--premium-text) !important;
+}
+
+html body .movie-side-menu .movie-menu-item:hover:not(.disabled),
+html body .movie-side-menu .movie-menu-item:focus-visible {
+    background: var(--premium-surface-gradient) !important;
+    background-image: var(--premium-surface-gradient) !important;
+    border-color: var(--premium-cyan) !important;
+    color: var(--premium-cyan-soft) !important;
+}
+
+html body .movie-side-menu .movie-menu-icon,
+html body .movie-side-menu .movie-menu-item > .bi-chevron-right,
+html body .movie-side-menu .movie-menu-item > .bi-lock {
+    color: var(--premium-cyan-soft) !important;
+}
+
+html body .movie-side-menu .movie-menu-content strong {
+    color: var(--premium-text) !important;
+}
+
+html body .movie-side-menu .movie-menu-content small {
+    color: var(--premium-muted) !important;
+}
+
+html body .movie-side-menu .movie-menu-item.disabled,
+html body .movie-side-menu .movie-menu-item.disabled .movie-menu-content strong,
+html body .movie-side-menu .movie-menu-item.disabled .movie-menu-content small {
+    color: var(--premium-muted) !important;
+}
+
+html body .movie-side-menu .movie-side-menu-header,
+html body .movie-side-menu .movie-login-row {
+    background: var(--premium-surface-gradient) !important;
+    background-image: var(--premium-surface-gradient) !important;
+    border-color: var(--premium-border) !important;
+}
+
+html body .movie-side-menu .movie-menu-close,
+html body .movie-side-menu .movie-profile-placeholder {
+    background: var(--premium-deep) !important;
+    background-image: none !important;
+    border-color: var(--premium-border) !important;
+    color: var(--premium-cyan-soft) !important;
+}
+
+html body .movie-side-menu .movie-side-menu-header h3,
+html body .movie-side-menu .movie-login-text strong {
+    color: var(--premium-text) !important;
+}
