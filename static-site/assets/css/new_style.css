@@ -197,3 +197,120 @@ html body .movie-details-status {
     border-color: var(--premium-cyan-soft) !important;
     color: var(--premium-ink) !important;
 }
+
+html body .top-bar-bg .top-info-item,
+html body .top-bar-bg .top-info-item span,
+html body .top-bar-bg .top-info-item a,
+html body .top-bar-bg .top-info-item i,
+html body .top-bar-bg .icon-gold,
+html body .top-bar-bg .top-info-item a:hover,
+html body .top-bar-bg .top-bar-location-link:hover .top-info-item span {
+    color: var(--premium-text) !important;
+}
+
+html body .top-bar-bg {
+    border-color: var(--premium-border) !important;
+}
+
+html body .top-bar-bg .icon-gold {
+    color: var(--premium-cyan) !important;
+}
+
+@media (max-width: 991.98px) {
+    html body .top-contact-marquee,
+    html body .top-contact-marquee .mobile-top-marquee,
+    html body .top-contact-marquee .mobile-marquee-track {
+        background: var(--premium-surface-gradient) !important;
+        background-image: var(--premium-surface-gradient) !important;
+    }
+
+    html body .top-contact-marquee {
+        border-top-color: var(--premium-border) !important;
+        border-bottom-color: var(--premium-border) !important;
+    }
+
+    html body .top-contact-marquee .top-info-item,
+    html body .top-contact-marquee .top-info-item span,
+    html body .top-contact-marquee .top-info-item a {
+        color: var(--premium-text) !important;
+    }
+
+    html body .top-contact-marquee .icon-gold,
+    html body .top-contact-marquee .marquee-divider {
+        color: var(--premium-cyan) !important;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    html body .top-bar-bg .container-fluid {
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+    }
+
+    html body .top-bar-content {
+        min-height: 38px !important;
+        flex-wrap: nowrap !important;
+        justify-content: space-between !important;
+        gap: 12px !important;
+        padding-top: 4px !important;
+        padding-bottom: 4px !important;
+    }
+
+    html body .top-bar-left,
+    html body .top-bar-right {
+        width: auto !important;
+        justify-content: flex-start !important;
+    }
+
+    html body .top-bar-left {
+        gap: 12px !important;
+    }
+
+    html body .top-bar-right {
+        flex: 0 0 auto !important;
+        margin-left: auto !important;
+        gap: 12px !important;
+    }
+
+    html body .top-bar-bg .top-info-item {
+        font-size: 11.5px !important;
+    }
+
+    html body .movie-navbar-container {
+        gap: 28px !important;
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+    }
+
+    html body .sairam-header-logo {
+        width: 155px !important;
+        max-height: 78px !important;
+    }
+
+    html body .header-center-nav {
+        flex: 0 0 auto !important;
+        min-width: 0;
+        gap: 18px !important;
+    }
+
+    html body .header-center-nav .header-nav-btn {
+        padding: 6px 18px !important;
+        font-size: 14px !important;
+    }
+
+    html body .movie-navbar-right {
+        gap: 24px !important;
+    }
+
+    html body .movie-city-btn {
+        padding: 8px 0 !important;
+        font-size: 15px !important;
+    }
+
+    html body .movie-signin-btn {
+        min-width: 84px !important;
+        min-height: 38px !important;
+        padding: 8px 17px !important;
+        font-size: 14px !important;
+    }
+}
