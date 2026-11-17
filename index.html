@@ -33,6 +33,11 @@
     <link rel="stylesheet" href="assets/css/header-mobile-theme.css">
     <link rel="stylesheet" href="assets/css/new_style.css">
     <style>
+        .hero_section_dark > .hero-banner-next,
+        .hero_section_dark > .hero-banner-prev {
+            z-index: 10000;
+        }
+
         @media (min-width: 1200px) {
             html body .movie-header-search {
                 flex: 0 0 38px;
@@ -944,36 +949,45 @@ OFFCANVAS MOBILE MENU
             <div class="swiper-wrapper">
 
                 <!-- Slide 1: INOX Cinema Background Image -->
-                <div class="swiper-slide">
+                <div class="swiper-slide" data-slide-duration-ms="4000">
                     <div class="slider-item">
-                        <img src="assets/images/movies/Movie-theatre-bg.png" 
+                        <img src="assets/images/movies/Movie-theatre-bg.png"
                              class="img-fluid hero_slider_img" 
                              alt="INOX Cinema Background">
                     </div>
                 </div>
 
                 <!-- Slide 2 -->
-                <div class="swiper-slide">
+                <div class="swiper-slide" data-slide-duration-ms="1950">
                     <div class="slider-item">
-                        <img src="assets/images/movies/Movies-bg.png" 
+                        <img src="assets/images/movies/marvel-gif-hero.gif"
                              class="img-fluid hero_slider_img" 
                              alt="Movie Banner 2">
                     </div>
                 </div>
 
                 <!-- Slide 3 -->
-                <div class="swiper-slide">
+                <div class="swiper-slide" data-slide-duration-ms="2520">
                     <div class="slider-item">
-                        <img src="assets/images/movies/Trailers-bg.png" 
+                        <img src="assets/images/movies/marvel-avengers.gif"
                              class="img-fluid hero_slider_img" 
                              alt="Movie Banner 3">
                     </div>
                 </div>
 
                 <!-- Slide 4 -->
-                <div class="swiper-slide">
+                <div class="swiper-slide" data-slide-duration-ms="2640">
                     <div class="slider-item">
-                        <img src="assets/images/movies/3d-experience-bg.png" 
+                        <img src="assets/images/movies/marvel-spiderman-once.gif"
+                             class="img-fluid hero_slider_img"
+                             alt="Movie Banner 3">
+                    </div>
+                </div>
+
+                <!-- Slide 5 -->
+                <div class="swiper-slide" data-slide-duration-ms="4800">
+                    <div class="slider-item">
+                        <img src="assets/images/movies/avengers.gif"
                              class="img-fluid hero_slider_img" 
                              alt="Movie Banner 3">
                     </div>
@@ -981,12 +995,12 @@ OFFCANVAS MOBILE MENU
 
             </div>
 
-            <div class="swiper-button-next" aria-label="Next hero banner"></div>
-            <div class="swiper-button-prev" aria-label="Previous hero banner"></div>
-
             <!-- Carousel Pagination Bullets -->
             <div class="swiper-pagination hero-swiper-pagination"></div>
         </div>
+
+        <div class="swiper-button-next hero-banner-next" aria-label="Next hero banner"></div>
+        <div class="swiper-button-prev hero-banner-prev" aria-label="Previous hero banner"></div>
 
         <!-- Dark Theater Overlay Gradient -->
         <!-- <div class="hero_dark_overlay"></div> -->
@@ -2837,24 +2851,85 @@ COMING SOON
 
         <script>
 document.addEventListener('DOMContentLoaded', function () {
-    // Initialize Hero Background Slider
+    var heroAdvanceTimer;
+    var pendingHeroGif;
+    var pendingHeroGifLoad;
+    var pendingHeroGifError;
     var heroBgSwiper = new Swiper('.heroBgSwiper', {
         loop: true,
         effect: 'slide',
-        autoplay: {
-            delay: 4000,
-            disableOnInteraction: true,
-            pauseOnMouseEnter: true,
-        },
+        speed: 700,
         navigation: {
-            nextEl: '.heroBgSwiper .swiper-button-next',
-            prevEl: '.heroBgSwiper .swiper-button-prev',
+            nextEl: '.hero-banner-next',
+            prevEl: '.hero-banner-prev',
         },
         pagination: {
             el: '.hero-swiper-pagination',
             clickable: true,
         },
     });
+
+    function clearPendingHeroGifLoad() {
+        if (!pendingHeroGif) return;
+        pendingHeroGif.removeEventListener('load', pendingHeroGifLoad);
+        pendingHeroGif.removeEventListener('error', pendingHeroGifError);
+        pendingHeroGif = null;
+        pendingHeroGifLoad = null;
+        pendingHeroGifError = null;
+    }
+
+    function advanceAfter(duration) {
+        heroAdvanceTimer = window.setTimeout(function () {
+            heroBgSwiper.slideNext();
+        }, duration);
+    }
+
+    function scheduleHeroAdvance() {
+        window.clearTimeout(heroAdvanceTimer);
+        clearPendingHeroGifLoad();
+
+        var activeSlide = heroBgSwiper.slides[heroBgSwiper.activeIndex];
+        var activeImage = activeSlide && activeSlide.querySelector('.hero_slider_img');
+        var duration = Number(activeSlide && activeSlide.dataset.slideDurationMs) || 4000;
+        var imageSrc = activeImage && activeImage.getAttribute('src');
+
+        if (!imageSrc || !/\.gif(?:[?#]|$)/i.test(imageSrc)) {
+            advanceAfter(duration);
+            return;
+        }
+
+        var timerStarted = false;
+        function startGifCycleTimer() {
+            if (timerStarted) return;
+            timerStarted = true;
+            clearPendingHeroGifLoad();
+            if (heroBgSwiper.slides[heroBgSwiper.activeIndex] === activeSlide) {
+                advanceAfter(duration);
+            }
+        }
+
+        pendingHeroGif = activeImage;
+        pendingHeroGifLoad = startGifCycleTimer;
+        pendingHeroGifError = function () {
+            clearPendingHeroGifLoad();
+            console.error('Unable to load hero GIF:', imageSrc);
+        };
+        activeImage.addEventListener('load', pendingHeroGifLoad);
+        activeImage.addEventListener('error', pendingHeroGifError);
+        activeImage.removeAttribute('src');
+        activeImage.setAttribute('src', imageSrc);
+
+        if (activeImage.complete && activeImage.naturalWidth > 0) {
+            startGifCycleTimer();
+        }
+    }
+
+    heroBgSwiper.on('slideChangeTransitionStart', function () {
+        window.clearTimeout(heroAdvanceTimer);
+        clearPendingHeroGifLoad();
+    });
+    heroBgSwiper.on('slideChangeTransitionEnd', scheduleHeroAdvance);
+    scheduleHeroAdvance();
 });
 </script>
 
@@ -4196,6 +4271,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'devara': {
             title: 'Devara Part 1',
             image: 'assets/images/movies/devara1.png',
+            backdrop: 'assets/images/movies/devara-1-movie.webp',
             rating: '9.1/10',
             votes: '240K+ Votes',
             meta: '2h 58m  •  Action, Thriller  •  UA  •  Telugu',
