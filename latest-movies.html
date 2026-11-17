@@ -752,6 +752,36 @@ OFFCANVAS MOBILE MENU
 
             <div class="swiper-wrapper">
 
+                <div class="swiper-slide">
+                    <div
+                        class="movie_card"
+                        tabindex="0"
+                        role="button"
+                        onclick="window.location.href='booking.html?movie=Ramayana+Part+1&amp;language=te';"
+                    >
+                        <div class="movie_image">
+                            <img
+                                src="assets/images/movies/Ramayana-part-1.webp"
+                                class="img-fluid"
+                                alt="Ramayana Part 1"
+                                loading="lazy"
+                                onerror="this.onerror=null;this.src='https://placehold.co/500x750/0b0b0b/d6aa3d?text=Ramayana+Part+1';"
+                            >
+                            <span class="movie_rating">NEW</span>
+                        </div>
+                        <div class="movie_content">
+                            <h4 class="movie_title">Ramayana Part 1</h4>
+                            <p class="movie_genre">Epic • Telugu</p>
+                            <a
+                                href="booking.html?movie=Ramayana+Part+1&amp;language=te"
+                                class="book_movie_btn"
+                                onclick="event.stopPropagation();"
+                            >
+                                Book Tickets
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
                 
 
@@ -4820,6 +4850,19 @@ document.addEventListener('DOMContentLoaded', function () {
             cast: [['Prabhas', 'Actor', 'assets/images/cast/cast1.jpg'], ['Amitabh Bachchan', 'Actor', 'assets/images/cast/cast2.jpg'], ['Kamal Haasan', 'Actor', 'assets/images/cast/cast3.jpg']],
             crew: [['Nag Ashwin', 'Director', 'assets/images/cast/cast4.jpg'], ['Santhosh Narayanan', 'Music', 'assets/images/cast/cast1.jpg']],
             review: 'A visionary sci-fi epic blending Indian mythology with futuristic world-building.'
+        },
+        'ramayana-part-1': {
+            title: 'Ramayana Part 1',
+            image: 'assets/images/movies/Ramayana-part-1.webp',
+            backdrop: 'assets/images/movies/ramayana-part-1-movie.avif',
+            rating: 'Not rated yet',
+            votes: 'No votes yet',
+            meta: 'Epic, Mythological • Telugu',
+            tags: ['Telugu'],
+            story: 'Movie details coming soon.',
+            cast: [],
+            crew: [],
+            review: 'Review details coming soon.'
         }
     };
 
@@ -4896,8 +4939,10 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('movieDetailsStory').textContent = movie.story;
         document.getElementById('movieReviewTitle').textContent = movie.title;
         document.getElementById('movieReviewText').textContent = movie.review;
-        document.getElementById('movieDetailsPoster').src = movie.image;
-        document.getElementById('movieDetailsBackdrop').src = movie.image;
+        document.getElementById('movieDetailsPoster').src = movie.poster || movie.image;
+        const movieBackdrop = document.getElementById('movieDetailsBackdrop');
+        movieBackdrop.src = movie.backdrop || movie.image;
+        movieBackdrop.classList.toggle('movie-details-backdrop-fit', Boolean(movie.backdrop));
         document.getElementById('movieDetailsPoster').alt = movie.title;
         document.getElementById('movieDetailsBackdrop').alt = movie.title;
         document.getElementById('movieDetailsTags').innerHTML = movie.tags.map(tag => `<span>${tag}</span>`).join('');

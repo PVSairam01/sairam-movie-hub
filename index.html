@@ -1043,6 +1043,30 @@ OFFCANVAS MOBILE MENU
 
                 <div class="swiper-wrapper">
 
+                    <!-- Ramayana Part 1 -->
+                    <div class="swiper-slide">
+                        <div class="movie_card movie-card-clickable" data-movie-id="ramayana-part-1" tabindex="0" role="button">
+                            <div class="movie_image">
+                                <img src="assets/images/movies/Ramayana-part-1.webp" class="img-fluid" alt="Ramayana Part 1" onerror="this.src='https://via.placeholder.com/250x375?text=Ramayana+Part+1'">
+                                <span class="movie_rating">NEW</span>
+                                <button class="wishlist_btn" type="button" aria-label="Add Ramayana Part 1 to wishlist">
+                                    <i class="bi bi-heart"></i>
+                                </button>
+                            </div>
+                            <div class="movie_content">
+                                <h4 class="movie_title">Ramayana Part 1</h4>
+                                <p class="movie_genre">Epic • Telugu</p>
+                                <div class="movie_info">
+                                    <span><i class="bi bi-clock"></i> Coming Soon</span>
+                                    <span><i class="bi bi-camera-reels"></i> 2D</span>
+                                </div>
+                                <a href="#" class="book_movie_btn" onclick="event.preventDefault(); event.stopPropagation(); openMovieDetails('ramayana-part-1');">
+                                    <i class="bi bi-ticket-perforated-fill"></i>
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- Movie 1 -->
                     <div class="swiper-slide">
@@ -1456,6 +1480,23 @@ OFFCANVAS MOBILE MENU
         <!-- Movies Swiper Slider -->
         <div class="swiper teluguMoviesSwiper">
             <div class="swiper-wrapper">
+
+            <!-- Ramayana Part 1 -->
+            <div class="swiper-slide movie-genre-item action adventure" data-genre="action adventure">
+                <div class="movie_card movie-card-clickable" data-movie-id="ramayana-part-1" tabindex="0" role="button" onclick="openMovieDetails('ramayana-part-1')">
+                    <div class="movie_image">
+                        <img src="assets/images/movies/Ramayana-part-1.webp" class="img-fluid" alt="Ramayana Part 1" onerror="this.src='https://via.placeholder.com/300x450?text=Ramayana+Part+1';">
+                        <span class="movie_rating">NEW</span>
+                    </div>
+                    <div class="movie_content">
+                        <h4 class="movie_title">Ramayana Part 1</h4>
+                        <p class="movie_genre">Epic • Telugu</p>
+                        <a href="#" class="book_movie_btn" onclick="event.preventDefault(); event.stopPropagation(); openMovieDetails('ramayana-part-1');">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+            </div>
 
                 <!-- Movie 1: Pushpa 2 -->
                 <div class="swiper-slide movie-genre-item action adventure" data-genre="action adventure">
@@ -4073,6 +4114,20 @@ document.addEventListener('DOMContentLoaded', function () {
             cast: [['Prabhas', 'Actor', 'assets/images/cast/cast1.jpg'], ['Amitabh Bachchan', 'Actor', 'assets/images/cast/cast2.jpg'], ['Kamal Haasan', 'Actor', 'assets/images/cast/cast3.jpg']],
             crew: [['Nag Ashwin', 'Director', 'assets/images/cast/cast4.jpg'], ['Santhosh Narayanan', 'Music', 'assets/images/cast/cast1.jpg']],
             review: 'A visionary sci-fi epic blending Indian mythology with futuristic world-building.'
+        },
+        'ramayana-part-1': {
+            title: 'Ramayana Part 1',
+            image: 'assets/images/movies/Ramayana-part-1.webp',
+            backdrop: 'assets/images/movies/ramayana-part-1-movie.avif',
+            useBackdrop: true,
+            rating: 'Not rated yet',
+            votes: 'No votes yet',
+            meta: 'Epic, Mythological • Telugu',
+            tags: ['Telugu'],
+            story: 'Movie details coming soon.',
+            cast: [],
+            crew: [],
+            review: 'Review details coming soon.'
         }
     };
 
