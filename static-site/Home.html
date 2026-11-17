@@ -3701,17 +3701,21 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="movie-cast-section">
                 <div class="movie-details-section-heading">
                     <h3>Cast</h3>
-                    <button type="button" class="movie-carousel-arrow" onclick="scrollMovieRow('movieCastRow')"><i class="bi bi-chevron-right"></i></button>
                 </div>
-                <div class="movie-person-row" id="movieCastRow"></div>
+                <div class="movie-person-carousel">
+                    <div class="movie-person-row" id="movieCastRow"></div>
+                    <button type="button" class="movie-carousel-arrow movie-person-carousel-arrow" aria-label="Scroll cast" onclick="scrollMovieRow('movieCastRow')"><i class="bi bi-chevron-right"></i></button>
+                </div>
             </div>
 
             <div class="movie-crew-section">
                 <div class="movie-details-section-heading">
                     <h3>Crew</h3>
-                    <button type="button" class="movie-carousel-arrow" onclick="scrollMovieRow('movieCrewRow')"><i class="bi bi-chevron-right"></i></button>
                 </div>
-                <div class="movie-person-row" id="movieCrewRow"></div>
+                <div class="movie-person-carousel">
+                    <div class="movie-person-row" id="movieCrewRow"></div>
+                    <button type="button" class="movie-carousel-arrow movie-person-carousel-arrow" aria-label="Scroll crew" onclick="scrollMovieRow('movieCrewRow')"><i class="bi bi-chevron-right"></i></button>
+                </div>
             </div>
 
             <div class="movie-reviews-section">
@@ -4135,6 +4139,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const row = document.getElementById(targetId);
         if (!row) return;
         row.innerHTML = people.map(person => `<article class="movie-person-card"><img src="${person[2]}" alt="${person[0]}" onerror="this.src='https://via.placeholder.com/150x180?text=Photo'"><h4>${person[0]}</h4><p>${person[1]}</p></article>`).join('');
+        row.scrollLeft = 0;
     }
 
     function renderRelated(activeId) {
@@ -4171,7 +4176,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     window.scrollMovieRow = function (id) {
         const row = document.getElementById(id);
-        if (row) row.scrollBy({ left: Math.max(260, row.clientWidth * .7), behavior: 'smooth' });
+        const firstCard = row && row.querySelector('.movie-person-card');
+        if (!row || !firstCard) return;
+        const gap = parseFloat(getComputedStyle(row).columnGap) || 0;
+        row.scrollBy({ left: (firstCard.offsetWidth + gap) * 5, behavior: 'smooth' });
     };
 
     function attachMovieClicks() {
