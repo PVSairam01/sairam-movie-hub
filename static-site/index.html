@@ -3853,6 +3853,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'mission-impossible': {
             title: 'Mission Impossible',
             image: 'assets/images/movies/movie2.jpg',
+            backdrop: 'assets/images/movies/Mission-impossible-movie.jpg',
             rating: '8.8/10',
             votes: '180K+ Votes',
             meta: '2h 40m  •  Action, Thriller  •  UA  •  English',
@@ -3865,6 +3866,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'avatar': {
             title: 'Avatar',
             image: 'assets/images/movies/movie3.jpg',
+            backdrop: 'assets/images/movies/Avatar-The-Way-of-Water-2022.webp',
             rating: '9.0/10',
             votes: '195K+ Votes',
             meta: '2h 52m  •  Adventure, Fantasy  •  UA  •  English',
@@ -3961,6 +3963,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'pushpa-2': {
             title: 'Pushpa 2: The Rule',
             image: 'assets/images/movies/Pushpa-2-theRule.png',
+            backdrop: 'assets/images/movies/pushpa-2-movie.jpg',
             rating: '9.4/10',
             votes: '350K+ Votes',
             meta: '3h 20m  •  Action, Drama  •  UA16+  •  Telugu',
@@ -3985,6 +3988,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'tillu-square': {
             title: 'Tillu Square',
             image: 'assets/images/movies/Tillu-square.png',
+            backdrop: 'assets/images/movies/Tillu-square-movie.jpg',
             rating: '8.7/10',
             votes: '110K+ Votes',
             meta: '2h 05m  •  Comedy, Crime, Romance  •  UA  •  Telugu',
@@ -3997,6 +4001,8 @@ document.addEventListener('DOMContentLoaded', function () {
         'virupaksha': {
             title: 'Virupaksha',
             image: 'assets/images/movies/virupaksha.jpg',
+            poster: 'assets/images/movies/virupaksha-poster.png',
+            backdrop: 'assets/images/movies/veerupaksha-movie.jfif',
             rating: '8.9/10',
             votes: '95K+ Votes',
             meta: '2h 25m  •  Horror, Mystery, Thriller  •  UA  •  Telugu',
@@ -4009,6 +4015,8 @@ document.addEventListener('DOMContentLoaded', function () {
         'game-changer': {
             title: 'Game Changer',
             image: 'assets/images/movies/game-changer.jpg',
+            poster: 'assets/images/movies/game-changer-poster.png',
+            backdrop: 'assets/images/movies/ram-charan-game-changer-new-poster.avif',
             rating: '9.0/10',
             votes: '180K+ Votes',
             meta: '2h 50m  •  Action, Drama  •  UA  •  Telugu',
@@ -4021,6 +4029,8 @@ document.addEventListener('DOMContentLoaded', function () {
         'kalki-2898': {
             title: 'Kalki 2898 AD',
             image: 'assets/images/movies/kalki.jpg',
+            poster: 'assets/images/movies/kalki-poster.png',
+            backdrop: 'assets/images/movies/kalki.webp',
             rating: '9.3/10',
             votes: '310K+ Votes',
             meta: '3h 01m  •  Sci-Fi, Action, Fantasy  •  UA  •  Telugu',
@@ -4105,7 +4115,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('movieDetailsStory').textContent = movie.story;
         document.getElementById('movieReviewTitle').textContent = movie.title;
         document.getElementById('movieReviewText').textContent = movie.review;
-        document.getElementById('movieDetailsPoster').src = movie.image;
+        document.getElementById('movieDetailsPoster').src = movie.poster || movie.image;
         document.getElementById('movieDetailsBackdrop').src = movie.image;
         document.getElementById('movieDetailsPoster').alt = movie.title;
         document.getElementById('movieDetailsBackdrop').alt = movie.title;
