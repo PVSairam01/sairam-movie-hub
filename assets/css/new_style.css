@@ -162,7 +162,6 @@ html body .movie-rate-btn,
 html body .movie-share-btn,
 html body .header-nav-btn,
 html body .movie-signin-btn,
-html body .movie-menu-btn,
 html body .movie-login-register,
 html body .btn-proceed,
 html body .booking-page .btn-primary {
@@ -170,6 +169,19 @@ html body .booking-page .btn-primary {
     background-image: linear-gradient(135deg, #b88932 0%, #f0cc72 100%) !important;
     border-color: #f0cc72 !important;
     color: #08232d !important;
+}
+
+html body .movie-menu-btn,
+html body .movie-menu-btn:hover,
+html body .movie-menu-btn:focus-visible {
+    background: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    color: #d4af37 !important;
+}
+
+html body .movie-menu-btn span {
+    background: #d4af37 !important;
 }
 
 html body .movie-city-btn {
