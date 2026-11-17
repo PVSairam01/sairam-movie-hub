@@ -33,8 +33,6 @@ img.pc-img.pc-in{animation:pcFocus 1.2s var(--pc-ease) both}
   to{clip-path:inset(0 0 0 0);filter:blur(0) brightness(1)}
 }
 .pc-par{scale:1.16;translate:0 var(--py,0px);will-change:translate}
-.heroBgSwiper .hero_slider_img{scale:1.08;translate:var(--hx,0px) var(--hy,0px)}
-.hero_content_wrapper{translate:calc(var(--hx,0px) * -.6) calc(var(--hy,0px) * -.6)}
 
 /* ---------- 4. CURSOR SPOTLIGHT + 3D TILT CARDS ---------- */
 .movie_card,.cast_card,.offer_card,.why_card,.review_card,.coming_card,.partner_logo,.trailer_card{position:relative;transform-style:preserve-3d}
@@ -110,9 +108,7 @@ div.genre_filters button.btn-outline-primary::after{
 .footer ul li a{transition:transform .3s var(--pc-ease),color .2s ease}
 .footer ul li a:hover{transform:translateX(5px)}
 
-/* ---------- 13. HERO TEXT ENTRY + KEN BURNS ---------- */
-.heroBgSwiper .hero_slider_img{transition:transform 7s linear}
-.heroBgSwiper .swiper-slide-active .hero_slider_img{transform:scale(1.09)}
+/* ---------- 13. HERO TEXT ENTRY ---------- */
 @keyframes pcFadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
 @keyframes pcPop{from{opacity:0;transform:scale(.86) rotate(-3deg)}to{opacity:1;transform:none}}
 .hero_content_wrapper .trust_badge_dark,.hero_content_wrapper .hero_main_title_dark,.hero_content_wrapper p,.hero_content_wrapper .btn{opacity:0;animation:pcFadeUp .9s var(--pc-ease) forwards}

@@ -981,6 +981,9 @@ OFFCANVAS MOBILE MENU
 
             </div>
 
+            <div class="swiper-button-next" aria-label="Next hero banner"></div>
+            <div class="swiper-button-prev" aria-label="Previous hero banner"></div>
+
             <!-- Carousel Pagination Bullets -->
             <div class="swiper-pagination hero-swiper-pagination"></div>
         </div>
@@ -1121,7 +1124,7 @@ OFFCANVAS MOBILE MENU
                                 <p class="movie_genre">Epic • Telugu</p>
                                 <div class="movie_info">
                                     <span><i class="bi bi-clock"></i> Coming Soon</span>
-                                    <span><i class="bi bi-camera-reels"></i> 2D</span>
+                                    <span><i class="bi bi-camera-reels"></i> 3D(Inox)</span>
                                 </div>
                                 <a href="#" class="book_movie_btn" onclick="event.preventDefault(); event.stopPropagation(); openMovieDetails('ramayana-part-1');">
                                     <i class="bi bi-ticket-perforated-fill"></i>
@@ -2837,15 +2840,16 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize Hero Background Slider
     var heroBgSwiper = new Swiper('.heroBgSwiper', {
         loop: true,
+        effect: 'slide',
         autoplay: {
-            delay: 4500,
-            disableOnInteraction: false,
+            delay: 4000,
+            disableOnInteraction: true,
+            pauseOnMouseEnter: true,
         },
-        effect: 'fade',
-        fadeEffect: {
-            crossFade: true
+        navigation: {
+            nextEl: '.heroBgSwiper .swiper-button-next',
+            prevEl: '.heroBgSwiper .swiper-button-prev',
         },
-        speed: 1200,
         pagination: {
             el: '.hero-swiper-pagination',
             clickable: true,
