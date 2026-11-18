@@ -10287,10 +10287,10 @@ div.genre_filters button.btn-outline-primary {
     background: linear-gradient(135deg, #feda75 0%, #fa7e1e 22%, #d62976 52%, #962fbf 76%, #4f5bd5 100%) !important;
 }
 
-/* 3. Twitter / X (Black) - Normal & Hover */
+/* 3. LinkedIn (Blue) - Normal & Hover */
 .social_icons a:nth-child(3), 
 .social_icons a:nth-child(3):hover {
-    background: #000000 !important;
+    background: #0a66c2 !important;
 }
 
 /* 4. YouTube (Red) - Normal & Hover */

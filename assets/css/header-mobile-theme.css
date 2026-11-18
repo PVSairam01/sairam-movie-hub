@@ -134,9 +134,9 @@ html body .top-contact-marquee .mobile-marquee-social a i {
         #feda75 0%, #fa7e1e 22%, #d62976 52%, #962fbf 76%, #4f5bd5 100%) !important;
 }
 
-.mobile-marquee-social a[aria-label="X"],
-.top-bar-social-icons a[aria-label="X"] {
-    background: #000 !important;
+.mobile-marquee-social a[aria-label="LinkedIn"],
+.top-bar-social-icons a[aria-label="LinkedIn"] {
+    background: #0a66c2 !important;
 }
 
 .mobile-marquee-social a[aria-label="YouTube"],
