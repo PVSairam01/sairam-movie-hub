@@ -54,61 +54,63 @@
 
 
 /* ---------------------------------------------------------
-   2) HEADER SOCIAL ICONS - same look as footer
-      (round, white ring, brand colours)
-      Applies to: mobile marquee + desktop top bar
+   2) HEADER SOCIAL ICONS - match the footer buttons
    --------------------------------------------------------- */
 .mobile-marquee-social,
 .top-bar-social-icons {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 9px !important;
     vertical-align: middle;
 }
 
 .mobile-marquee-social a,
 .top-bar-social-icons a {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: inline-flex;
+    width: 40px !important;
+    height: 40px !important;
+    flex: 0 0 40px !important;
+    border: 0 !important;
+    border-radius: 50% !important;
+    box-shadow: none !important;
+    display: inline-flex !important;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
     color: #fff !important;
+    font-size: 16px !important;
     text-decoration: none;
-    border: 1px solid rgba(255, 255, 255, .6);
-    box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
-    transition: transform .22s ease, box-shadow .22s ease;
+    transition: transform .3s ease;
 }
 
-.top-bar-social-icons a {
-    width: 34px;
-    height: 34px;
-    font-size: 15px;
+.mobile-marquee-social a i,
+.top-bar-social-icons a i {
+    color: #fff !important;
+    line-height: 1;
 }
 
 .mobile-marquee-social a:hover,
 .top-bar-social-icons a:hover {
-    transform: translateY(-2px) scale(1.08);
-    box-shadow: 0 6px 14px rgba(0, 0, 0, .35);
-    color: #fff !important;
+    transform: translateY(-3px);
 }
 
 .mobile-marquee-social a[aria-label="Facebook"],
 .top-bar-social-icons a[aria-label="Facebook"] {
-    background: #1877f2;
+    background: #1877f2 !important;
 }
 
 .mobile-marquee-social a[aria-label="Instagram"],
 .top-bar-social-icons a[aria-label="Instagram"] {
-    background: radial-gradient(circle at 30% 107%,
-        #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+    background: linear-gradient(135deg,
+        #feda75 0%, #fa7e1e 22%, #d62976 52%, #962fbf 76%, #4f5bd5 100%) !important;
 }
 
-.mobile-marquee-social a[aria-label="WhatsApp"],
-.top-bar-social-icons a[aria-label="WhatsApp"] {
-    background: #25d366;
+.mobile-marquee-social a[aria-label="LinkedIn"],
+.top-bar-social-icons a[aria-label="LinkedIn"] {
+    background: #0a66c2 !important;
+}
+
+.mobile-marquee-social a[aria-label="YouTube"],
+.top-bar-social-icons a[aria-label="YouTube"] {
+    background: #ff0000 !important;
 }
 
 
