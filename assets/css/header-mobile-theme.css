@@ -60,7 +60,7 @@
 .top-bar-social-icons {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 9px;
     vertical-align: middle;
 }
 
@@ -78,28 +78,48 @@
 }
 
 .top-bar-bg .top-bar-social-icons a {
-    width: 32px !important;
-    height: 32px !important;
-    flex-basis: 32px !important;
-    font-size: 14px !important;
+    width: 40px !important;
+    height: 40px !important;
+    flex-basis: 40px !important;
+    font-size: 16px !important;
     color: #fff !important;
+    border: 1px solid var(--sairam-gold-border) !important;
+    box-shadow: none !important;
 }
 
 .top-contact-marquee .mobile-marquee-social a {
-    width: 30px !important;
-    height: 30px !important;
-    flex-basis: 30px !important;
-    font-size: 13px !important;
+    width: 40px !important;
+    height: 40px !important;
+    flex-basis: 40px !important;
+    font-size: 16px !important;
     color: #fff !important;
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, .6) !important;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, .25) !important;
+    border: 1px solid var(--sairam-gold-border) !important;
+    box-shadow: none !important;
+}
+
+.top-bar-bg .top-bar-social-icons {
+    gap: 9px !important;
+}
+
+.top-contact-marquee .mobile-marquee-social {
+    gap: 9px !important;
+}
+
+.top-contact-marquee .mobile-marquee-social a + a {
+    margin-left: 0 !important;
+}
+
+html body .top-bar-bg .top-bar-social-icons a,
+html body .top-bar-bg .top-bar-social-icons a i,
+html body .top-contact-marquee .mobile-marquee-social a,
+html body .top-contact-marquee .mobile-marquee-social a i {
+    color: #fff !important;
 }
 
 .mobile-marquee-social a:hover,
 .top-bar-social-icons a:hover {
-    transform: translateY(-2px) scale(1.08);
-    box-shadow: 0 6px 14px rgba(0, 0, 0, .35);
+    transform: scale(1.1);
+    box-shadow: none !important;
     color: #fff !important;
 }
 
@@ -110,8 +130,8 @@
 
 .mobile-marquee-social a[aria-label="Instagram"],
 .top-bar-social-icons a[aria-label="Instagram"] {
-    background: radial-gradient(circle at 30% 107%,
-        #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%) !important;
+    background: linear-gradient(135deg,
+        #feda75 0%, #fa7e1e 22%, #d62976 52%, #962fbf 76%, #4f5bd5 100%) !important;
 }
 
 .mobile-marquee-social a[aria-label="X"],
@@ -127,6 +147,24 @@
 .mobile-marquee-social a[aria-label="WhatsApp"],
 .top-bar-social-icons a[aria-label="WhatsApp"] {
     background: #25d366 !important;
+}
+
+@media (max-width: 991.98px) {
+    .top-contact-marquee .mobile-marquee-social a {
+        width: 32px !important;
+        height: 32px !important;
+        flex-basis: 32px !important;
+        font-size: 14px !important;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    .top-bar-bg .top-bar-social-icons a {
+        width: 32px !important;
+        height: 32px !important;
+        flex-basis: 32px !important;
+        font-size: 14px !important;
+    }
 }
 
 

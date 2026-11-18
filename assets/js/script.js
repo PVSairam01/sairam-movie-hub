@@ -4,7 +4,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Trending Movies Swiper
     const trendingSwiper = new Swiper(".trendingSwiperDesktop", {
-        slidesPerView: 1,
+        slidesPerView: 1.5,
         spaceBetween: 20,
         centeredSlides: false,
         loop: true,
