@@ -842,3 +842,12 @@ html body .booking-page .form-control::placeholder {
         padding: 18px 14px;
     }
 }
+
+html body .hero_section_dark > .hero-banner-next,
+html body .hero_section_dark > .hero-banner-prev,
+html body .hero_section_dark > .hero-banner-next:hover,
+html body .hero_section_dark > .hero-banner-prev:hover {
+    background: transparent !important;
+    background-image: none !important;
+    color: #ffffff !important;
+}
