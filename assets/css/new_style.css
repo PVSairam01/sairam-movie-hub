@@ -846,7 +846,25 @@ html body .booking-page .form-control::placeholder {
 html body .hero_section_dark > .hero-banner-next,
 html body .hero_section_dark > .hero-banner-prev,
 html body .hero_section_dark > .hero-banner-next:hover,
-html body .hero_section_dark > .hero-banner-prev:hover {
+html body .hero_section_dark > .hero-banner-prev:hover,
+html body .movie_section .swiper-button-next,
+html body .movie_section .swiper-button-prev,
+html body .movie_section .swiper-button-next:hover,
+html body .movie_section .swiper-button-prev:hover,
+html body .movie_section .swiper-button-next:focus-visible,
+html body .movie_section .swiper-button-prev:focus-visible,
+html body .telugu_movies_section .swiper-button-next,
+html body .telugu_movies_section .swiper-button-prev,
+html body .telugu_movies_section .swiper-button-next:hover,
+html body .telugu_movies_section .swiper-button-prev:hover,
+html body .telugu_movies_section .swiper-button-next:focus-visible,
+html body .telugu_movies_section .swiper-button-prev:focus-visible,
+html body .sw-section .swiper-button-next,
+html body .sw-section .swiper-button-prev,
+html body .sw-section .swiper-button-next:hover,
+html body .sw-section .swiper-button-prev:hover,
+html body .sw-section .swiper-button-next:focus-visible,
+html body .sw-section .swiper-button-prev:focus-visible {
     background: transparent !important;
     background-image: none !important;
     color: #ffffff !important;
