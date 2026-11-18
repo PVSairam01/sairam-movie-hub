@@ -24,9 +24,18 @@ body {
 }
 
 html body .top-bar-bg,
+html body .top-contact-marquee,
+html body .top-contact-marquee .mobile-top-marquee,
+html body .top-contact-marquee .mobile-marquee-track,
 html body .movie-navbar,
 html body .movie-navbar-main,
-html body .movie-secondary-navbar,
+html body .movie-secondary-navbar {
+    background: var(--premium-surface) !important;
+    background-image: none !important;
+    border-color: var(--premium-border) !important;
+    color: var(--premium-text) !important;
+}
+
 html body .movie-side-menu,
 html body .footer {
     background: var(--premium-surface-gradient) !important;
@@ -232,8 +241,8 @@ html body .top-bar-bg .icon-gold {
     html body .top-contact-marquee,
     html body .top-contact-marquee .mobile-top-marquee,
     html body .top-contact-marquee .mobile-marquee-track {
-        background: var(--premium-surface-gradient) !important;
-        background-image: var(--premium-surface-gradient) !important;
+        background: var(--premium-surface) !important;
+        background-image: none !important;
     }
 
     html body .top-contact-marquee {
