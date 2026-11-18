@@ -944,7 +944,7 @@ OFFCANVAS MOBILE MENU
             <div class="swiper-wrapper">
 
                 <!-- Slide 1: INOX Cinema Background Image -->
-                <div class="swiper-slide" data-slide-duration-ms="4000">
+                <div class="swiper-slide">
                     <div class="slider-item">
                         <img src="assets/images/movies/Movie-theatre-bg.png"
                              class="img-fluid hero_slider_img" 
@@ -953,7 +953,7 @@ OFFCANVAS MOBILE MENU
                 </div>
 
                 <!-- Slide 2 -->
-                <div class="swiper-slide" data-slide-duration-ms="1950">
+                <div class="swiper-slide">
                     <div class="slider-item">
                         <img src="assets/images/movies/marvel-gif-hero.gif"
                              class="img-fluid hero_slider_img" 
@@ -962,7 +962,7 @@ OFFCANVAS MOBILE MENU
                 </div>
 
                 <!-- Slide 3 -->
-                <div class="swiper-slide" data-slide-duration-ms="2520">
+                <div class="swiper-slide">
                     <div class="slider-item">
                         <img src="assets/images/movies/marvel-avengers.gif"
                              class="img-fluid hero_slider_img" 
@@ -971,7 +971,7 @@ OFFCANVAS MOBILE MENU
                 </div>
 
                 <!-- Slide 4 -->
-                <div class="swiper-slide" data-slide-duration-ms="4800">
+                <div class="swiper-slide">
                     <div class="slider-item">
                         <img src="assets/images/movies/avengers.gif"
                              class="img-fluid hero_slider_img" 
@@ -2837,14 +2837,17 @@ COMING SOON
 
         <script>
 document.addEventListener('DOMContentLoaded', function () {
-    var heroAdvanceTimer;
+    var heroAdvanceTimer = null;
+    var heroAdvanceDeadline = 0;
+    var heroRemainingDelay = 0;
+    var heroAutoplayPaused = false;
     var pendingHeroGif;
     var pendingHeroGifLoad;
     var pendingHeroGifError;
     var heroBgSwiper = new Swiper('.heroBgSwiper', {
         loop: true,
         effect: 'slide',
-        speed: 700,
+        speed: 250,
         navigation: {
             nextEl: '.hero-banner-next',
             prevEl: '.hero-banner-prev',
@@ -2865,18 +2868,44 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function advanceAfter(duration) {
+        heroRemainingDelay = duration;
+        if (heroAutoplayPaused) return;
+
+        heroAdvanceDeadline = Date.now() + duration;
         heroAdvanceTimer = window.setTimeout(function () {
+            heroAdvanceTimer = null;
+            heroRemainingDelay = 0;
             heroBgSwiper.slideNext();
         }, duration);
     }
 
+    function pauseHeroAutoplay() {
+        if (heroAutoplayPaused) return;
+        heroAutoplayPaused = true;
+        if (heroAdvanceTimer !== null) {
+            window.clearTimeout(heroAdvanceTimer);
+            heroAdvanceTimer = null;
+            heroRemainingDelay = Math.max(0, heroAdvanceDeadline - Date.now());
+        }
+    }
+
+    function resumeHeroAutoplay() {
+        if (!heroAutoplayPaused) return;
+        heroAutoplayPaused = false;
+        if (heroRemainingDelay > 0) {
+            advanceAfter(heroRemainingDelay);
+        }
+    }
+
     function scheduleHeroAdvance() {
         window.clearTimeout(heroAdvanceTimer);
+        heroAdvanceTimer = null;
+        heroRemainingDelay = 0;
         clearPendingHeroGifLoad();
 
         var activeSlide = heroBgSwiper.slides[heroBgSwiper.activeIndex];
         var activeImage = activeSlide && activeSlide.querySelector('.hero_slider_img');
-        var duration = Number(activeSlide && activeSlide.dataset.slideDurationMs) || 4000;
+        var duration = 3000;
         var imageSrc = activeImage && activeImage.getAttribute('src');
 
         if (!imageSrc || !/\.gif(?:[?#]|$)/i.test(imageSrc)) {
@@ -2912,9 +2941,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     heroBgSwiper.on('slideChangeTransitionStart', function () {
         window.clearTimeout(heroAdvanceTimer);
+        heroAdvanceTimer = null;
+        heroRemainingDelay = 0;
         clearPendingHeroGifLoad();
     });
     heroBgSwiper.on('slideChangeTransitionEnd', scheduleHeroAdvance);
+    heroBgSwiper.el.addEventListener('mouseenter', pauseHeroAutoplay);
+    heroBgSwiper.el.addEventListener('mouseleave', resumeHeroAutoplay);
     scheduleHeroAdvance();
 });
 </script>
