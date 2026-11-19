@@ -4514,6 +4514,7 @@ document.addEventListener('DOMContentLoaded', function () {
         overlay.classList.add('is-open');
         overlay.setAttribute('aria-hidden', 'false');
         document.body.classList.add('movie-details-open');
+        requestAnimationFrame(updateMoviePersonCarouselArrows);
         const panel = document.getElementById('movieDetailsPanel');
         if (panel) panel.scrollTop = 0;
     };
@@ -4523,6 +4524,17 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!row) return;
         row.innerHTML = people.map(person => `<article class="movie-person-card"><img src="${person[2]}" alt="${person[0]}" onerror="this.src='https://via.placeholder.com/150x180?text=Photo'"><h4>${person[0]}</h4><p>${person[1]}</p></article>`).join('');
         row.scrollLeft = 0;
+        updateMoviePersonCarouselArrow(row);
+    }
+
+    function updateMoviePersonCarouselArrow(row) {
+        const arrow = row.closest('.movie-person-carousel')?.querySelector('.movie-person-carousel-arrow');
+        if (!arrow) return;
+        arrow.hidden = row.scrollWidth <= row.clientWidth + 1;
+    }
+
+    function updateMoviePersonCarouselArrows() {
+        document.querySelectorAll('.movie-person-row').forEach(updateMoviePersonCarouselArrow);
     }
 
     function renderRelated(activeId) {
@@ -4560,10 +4572,12 @@ document.addEventListener('DOMContentLoaded', function () {
     window.scrollMovieRow = function (id) {
         const row = document.getElementById(id);
         const firstCard = row && row.querySelector('.movie-person-card');
-        if (!row || !firstCard) return;
+        if (!row || !firstCard || row.scrollWidth <= row.clientWidth + 1) return;
         const gap = parseFloat(getComputedStyle(row).columnGap) || 0;
         row.scrollBy({ left: (firstCard.offsetWidth + gap) * 5, behavior: 'smooth' });
     };
+
+    window.addEventListener('resize', updateMoviePersonCarouselArrows);
 
     function attachMovieClicks() {
         document.querySelectorAll('.movie-card-clickable').forEach(card => {

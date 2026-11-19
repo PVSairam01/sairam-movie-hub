@@ -4159,6 +4159,10 @@ body.modal-open-custom {
     box-shadow: 0 2px 8px rgba(0,0,0,.2);
 }
 
+.movie-person-carousel-arrow[hidden] {
+    display: none !important;
+}
+
 .movie-person-card img {
     width: 150px;
     height: 150px;
